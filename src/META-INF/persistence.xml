@@ -5,10 +5,10 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 version="2.0">
 	<persistence-unit name="HotelImpl" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    	<class>org.project.domain.Customer</class>
+    	<!--  <class>org.project.domain.Customer</class>
     	<class>org.project.domain.Offer</class>
     	<class>org.project.domain.Reservation</class>
-    	<class>org.project.domain.Room</class>
+    	<class>org.project.domain.Room</class> -->
 	   <properties>
 	      <property name="hibernate.show_sql" value="false"/>
           <property name="hibernate.format_sql" value="true"/>      

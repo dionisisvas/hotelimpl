@@ -4,12 +4,13 @@
 package org.project.dao;
 
 import org.project.domain.Room;
+import java.util.SortedSet;
 import java.util.Set;
 
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
- * @author katsivelhsp
+ * @author pkourtis
  * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
  */
 public interface RoomDAO extends GenericDAO<Room> {
@@ -20,7 +21,7 @@ public interface RoomDAO extends GenericDAO<Room> {
 	 * @return
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Set<Room> find(Integer reservationID);
+	public SortedSet<Room> find(Integer reservationID);
 
 	/** 
 	 * <!-- begin-UML-doc -->

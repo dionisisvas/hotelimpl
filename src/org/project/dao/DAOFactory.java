@@ -3,10 +3,12 @@
  */
 package org.project.dao;
 
+import static org.project.jpadao.JpaDAOFactory.*;
+
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
- * @author katsivelhsp
+ * @author pkourtis
  * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
  */
 public abstract class DAOFactory {

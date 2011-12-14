@@ -6,7 +6,7 @@ package org.project.dao;
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
- * @author katsivelhsp
+ * @author pkourtis
  * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
  */
 public interface GenericDAO<T> {
@@ -16,7 +16,7 @@ public interface GenericDAO<T> {
 	 * @return
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public T findAll();
+	public Object findAll();
 
 	/** 
 	 * <!-- begin-UML-doc -->
@@ -24,7 +24,7 @@ public interface GenericDAO<T> {
 	 * @param save
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void save(T save);
+	public void save(Object save);
 
 	/** 
 	 * <!-- begin-UML-doc -->
@@ -32,5 +32,5 @@ public interface GenericDAO<T> {
 	 * @param del
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void delete(T del);
+	public void delete(Object del);
 }

@@ -3,8 +3,15 @@
  */
 package org.project.jpadao;
 
-import org.project.domain.Reservation;
+import org.project.dao.CustomerDAO;
+import org.project.dao.DAOFactory;
+import static org.project.jpadao.ReservationJpaDAO.*;
+import static org.project.jpadao.CustomerJpaDAO.*;
+import static org.project.jpadao.RoomJpaDAO.*;
+import static org.project.jpadao.OfferJpaDAO.*;
+import org.project.dao.OfferDAO;
 import org.project.dao.ReservationDAO;
+import org.project.dao.RoomDAO;
 
 /** 
  * <!-- begin-UML-doc -->
@@ -12,15 +19,14 @@ import org.project.dao.ReservationDAO;
  * @author pkourtis
  * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
  */
-public class ReservationJpaDAO extends GenericJpaDAO<Reservation> implements
-		ReservationDAO {
-
+public class JpaDAOFactory extends DAOFactory {
 	/** 
 	 * (non-Javadoc)
-	 * @see ReservationDAO#findByID(Integer reservationID)
+	 * @see DAOFactory#getCustomerDAO()
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Reservation findByID(Integer reservationID) {
+	@Override
+	public CustomerDAO getCustomerDAO() {
 		// begin-user-code
 		// TODO Auto-generated method stub
 		return null;
@@ -29,43 +35,40 @@ public class ReservationJpaDAO extends GenericJpaDAO<Reservation> implements
 
 	/** 
 	 * (non-Javadoc)
-	 * @see ReservationDAO#save(Reservation currentReservation)
+	 * @see DAOFactory#getReservationDAO()
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void save(Reservation currentReservation) {
+	@Override
+	public ReservationDAO getReservationDAO() {
 		// begin-user-code
 		// TODO Auto-generated method stub
-
+		return null;
 		// end-user-code
 	}
 
 	/** 
 	 * (non-Javadoc)
-	 * @see ReservationDAO#delete()
+	 * @see DAOFactory#getRoomDAO()
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void delete() {
+	@Override
+	public RoomDAO getRoomDAO() {
 		// begin-user-code
 		// TODO Auto-generated method stub
-
+		return null;
 		// end-user-code
 	}
 
+	/** 
+	 * (non-Javadoc)
+	 * @see DAOFactory#getOfferDAO()
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
 	@Override
-	public Object findAll() {
+	public OfferDAO getOfferDAO() {
+		// begin-user-code
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void save(Object save) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete(Object del) {
-		// TODO Auto-generated method stub
-
+		// end-user-code
 	}
 }

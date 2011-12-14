@@ -1,9 +1,9 @@
 /**
  * 
  */
-package org.project.ui;
+package org.project.jpadao;
 
-import org.project.service.RoomService;
+import org.project.dao.GenericDAO;
 
 /** 
  * <!-- begin-UML-doc -->
@@ -11,31 +11,28 @@ import org.project.service.RoomService;
  * @author pkourtis
  * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
  */
-public class RoomForm implements RoomView {
+public abstract class GenericJpaDAO<T> implements GenericDAO<T> {
 	/** 
 	 * <!-- begin-UML-doc -->
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	private RoomService roomService;
-
-	/** 
-	 * @return the roomService
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public RoomService getRoomService() {
+	public void save() {
 		// begin-user-code
-		return roomService;
+		// TODO Auto-generated method stub
+
 		// end-user-code
 	}
 
 	/** 
-	 * @param roomService the roomService to set
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void setRoomService(RoomService roomService) {
+	public void delete() {
 		// begin-user-code
-		this.roomService = roomService;
+		// TODO Auto-generated method stub
+
 		// end-user-code
 	}
 }

@@ -4,40 +4,101 @@
 package org.project.domain;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
- * @author katsivelhsp
+ * @author pkourtis
  * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
  */
-@Entity
-@Table(name="reservations")
 public class Reservation {
 	/** 
 	 * <!-- begin-UML-doc -->
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	@Transient
+	private Integer reservationID;
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
 	private Double totalPrice;
+
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
+	private Boolean paid;
+
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
+	private Date startDate;
+
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
+	private Date endDate;
+
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
+	private Offer offer;
+
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
+
+	private Set<Room> room;
+
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
+
+	private Customer customer;
 
 	/** 
 	 * @return the totalPrice
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+
 	public Double getTotalPrice() {
 		// begin-user-code
 		// TODO Auto-generated method stub
 		//Offer offer = new Offer();
 		Iterator<Room> roomIt = room.iterator();
 		double totalPrice = 0.0;
-		while (roomIt.hasNext())
-		{
+		while (roomIt.hasNext()) {
 			Room curRoom = roomIt.next();
 			//TODO Pros epomenh omada: curRoom.getRoomType() needs to be used
 			//totalPrice -= offer.getOffer();
@@ -56,14 +117,6 @@ public class Reservation {
 		this.totalPrice = totalPrice;
 		// end-user-code
 	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Column(name="paid")
-	private Boolean paid;
 
 	/** 
 	 * @return the paid
@@ -86,15 +139,6 @@ public class Reservation {
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Temporal(TemporalType.DATE)
-	@Column(name="endDate", nullable=false)
-	private Date endDate;
-
-	/** 
 	 * @return the endDate
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
@@ -113,15 +157,6 @@ public class Reservation {
 		this.endDate = endDate;
 		// end-user-code
 	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Temporal(TemporalType.DATE)
-	@Column(name="startDate", nullable=false)
-	private Date startDate;
 
 	/** 
 	 * @return the startDate
@@ -144,16 +179,6 @@ public class Reservation {
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	
-	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY )
-	@JoinColumn(name="customerId",nullable=false)
-	private Customer customer;
-
-	/** 
 	 * @return the customer
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
@@ -172,15 +197,6 @@ public class Reservation {
 		this.customer = customer;
 		// end-user-code
 	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY )
-	@JoinColumn(name="offerId",nullable=true)
-	private Offer offer;
 
 	/** 
 	 * @return the offer
@@ -203,22 +219,12 @@ public class Reservation {
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	
-	@OneToMany(cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
-	@JoinColumn (name="roomId")
-	private Set<Room> room;
-
-	/** 
 	 * @return the room
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
 	public Set<Room> getRoom() {
 		// begin-user-code
-		return room;
+		return new HashSet<Room>(room);
 		// end-user-code
 	}
 
@@ -231,16 +237,6 @@ public class Reservation {
 		this.room = room;
 		// end-user-code
 	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Id
-	@Column(name="reservationId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer reservationID;
 
 	/** 
 	 * @return the reservationID
@@ -281,7 +277,7 @@ public class Reservation {
 	 * @return
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Integer getDuration(Date startDate, Date endDate) {
+	public Integer getDuration(java.sql.Date startDate, java.sql.Date endDate) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 		return null;
