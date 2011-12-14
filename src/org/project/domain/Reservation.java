@@ -23,6 +23,7 @@ public class Reservation {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Transient
 	private Double totalPrice;
 
 	/** 
@@ -32,7 +33,7 @@ public class Reservation {
 	public Double getTotalPrice() {
 		// begin-user-code
 		// TODO Auto-generated method stub
-		Offer offer = new Offer();
+		//Offer offer = new Offer();
 		Iterator<Room> roomIt = room.iterator();
 		double totalPrice = 0.0;
 		while (roomIt.hasNext())
@@ -61,7 +62,7 @@ public class Reservation {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	@Embedded
+	@Column(name="paid")
 	private Boolean paid;
 
 	/** 
@@ -90,7 +91,7 @@ public class Reservation {
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
 	@Temporal(TemporalType.DATE)
-	@Column(name="endDate",length=200,nullable=true)
+	@Column(name="endDate", nullable=false)
 	private Date endDate;
 
 	/** 
@@ -119,7 +120,7 @@ public class Reservation {
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
 	@Temporal(TemporalType.DATE)
-	@Column(name="startDate",length=200,nullable=true)
+	@Column(name="startDate", nullable=false)
 	private Date startDate;
 
 	/** 
@@ -147,7 +148,8 @@ public class Reservation {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	@ManyToOne
+	
+	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY )
 	@JoinColumn(name="customerId",nullable=false)
 	private Customer customer;
 
@@ -176,7 +178,7 @@ public class Reservation {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY )
 	@JoinColumn(name="offerId",nullable=true)
 	private Offer offer;
 
@@ -205,8 +207,9 @@ public class Reservation {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	@ManyToMany
-	@JoinTable(name="roomreservation", joinColumns={@JoinColumn(name="reservationId")}, inverseJoinColumns={@JoinColumn(name="roomId")})
+	
+	@OneToMany(cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
+	@JoinColumn (name="roomId")
 	private Set<Room> room;
 
 	/** 
@@ -234,15 +237,15 @@ public class Reservation {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Id
+	@Column(name="reservationId")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer reservationID;
 
 	/** 
 	 * @return the reservationID
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	@Id
-	@Column(name="reservationId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Integer getReservationID() {
 		// begin-user-code
 		return reservationID;
@@ -278,7 +281,7 @@ public class Reservation {
 	 * @return
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Integer getDuration(java.sql.Date startDate, java.sql.Date endDate) {
+	public Integer getDuration(Date startDate, Date endDate) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 		return null;
