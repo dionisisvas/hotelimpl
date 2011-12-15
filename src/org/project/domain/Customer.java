@@ -8,15 +8,18 @@ import javax.persistence.*;
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
- * @author pkourtis
+ * @author katsivelhsp
  * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
  */
+@Entity
+@Table(name="customers")
 public class Customer {
 	/** 
 	 * <!-- begin-UML-doc -->
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Column(name="firstName",nullable=false)
 	private String firstName;
 
 	/** 
@@ -44,6 +47,7 @@ public class Customer {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Column(name="address",nullable=true)
 	private String address;
 
 	/** 
@@ -71,6 +75,7 @@ public class Customer {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Column(name="email",nullable=true)
 	private String email;
 
 	/** 
@@ -98,6 +103,7 @@ public class Customer {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Column(name="phoneNumber",nullable=true)
 	private String phoneNumber;
 
 	/** 
@@ -125,6 +131,7 @@ public class Customer {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Column(name="lastName",nullable=false)
 	private String lastName;
 
 	/** 
@@ -144,6 +151,36 @@ public class Customer {
 	public void setLastName(String lastName) {
 		// begin-user-code
 		this.lastName = lastName;
+		// end-user-code
+	}
+
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
+	@Id
+	@Column(name="customerId",length=200,nullable=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer customerID;
+
+	/** 
+	 * @return the idNum
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
+	public Integer getId() {
+		// begin-user-code
+		return customerID;
+		// end-user-code
+	}
+
+	/** 
+	 * @param idNum the idNum to set
+	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 */
+	public void setId(Integer id) {
+		// begin-user-code
+		this.customerID = id;
 		// end-user-code
 	}
 }

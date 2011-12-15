@@ -10,18 +10,25 @@ import javax.persistence.*;
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
- * @author pkourtis
+ * @author katsivelhsp
  * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
  */
+@Entity
+@Table(name="offers")
 public class Offer {
-
+	
+	@Id
+	@Column(name="offerId")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer offerId;
-
+	
 	/** 
 	 * <!-- begin-UML-doc -->
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Temporal(TemporalType.DATE)
+	@Column(name="startingDate",nullable=false)
 	private Date startingDate;
 
 	/** 
@@ -49,6 +56,8 @@ public class Offer {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Temporal(TemporalType.DATE)
+	@Column(name="endingDate",nullable=false)
 	private Date endingDate;
 
 	/** 
@@ -76,6 +85,7 @@ public class Offer {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Column(name="percentage",nullable=false)
 	private Double percentage;
 
 	/** 
@@ -103,6 +113,8 @@ public class Offer {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name="roomType",nullable=false)
 	private RoomType roomType;
 
 	/** 
@@ -134,38 +146,13 @@ public class Offer {
 	 * @param percentage
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Offer(java.sql.Date startingDate, java.sql.Date endingDate,
+	public Offer(Date startingDate, Date endingDate,
 			RoomType roomType, double percentage) {
 		// begin-user-code
 		// TODO Auto-generated constructor stub
 		// end-user-code
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param startingDate
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public void setStartingDate(java.sql.Date startingDate) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param endingDate
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public void setEndingDate(java.sql.Date endingDate) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
 
 	/** 
 	 * <!-- begin-UML-doc -->
