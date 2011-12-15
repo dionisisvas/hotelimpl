@@ -3,69 +3,48 @@
  */
 package org.project.jpadao;
 
-import org.project.domain.Customer;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.project.dao.CustomerDAO;
+import org.project.domain.Customer;
 
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
  * @author pkourtis
- * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
  */
 public class CustomerJpaDAO extends GenericJpaDAO<Customer> implements
 		CustomerDAO {
 
 	/** 
 	 * (non-Javadoc)
-	 * @see CustomerDAO#find()
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 * @see CustomerDAO#find(Integer customerID)
+	 * 
 	 */
-	public void find() {
+	public Customer find(Integer customerID) {
 		// begin-user-code
 		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * (non-Javadoc)
-	 * @see CustomerDAO#save()
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public void save() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	 * (non-Javadoc)
-	 * @see CustomerDAO#delete()
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public void delete() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
+		Customer customer = JPAUtil.getCurrentEntityManager().find(
+				Customer.class, customerID);
+		return customer;
 		// end-user-code
 	}
 
 	@Override
-	public Object findAll() {
+	public List<Customer> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		CriteriaBuilder builder = JPAUtil.getEntityManagerFactory()
+				.getCriteriaBuilder();
+		CriteriaQuery<Customer> criteria = builder.createQuery(Customer.class);
+		Root<Customer> customer = criteria.from(Customer.class);
+		criteria.select(customer);
+		return JPAUtil.getCurrentEntityManager().createQuery(criteria)
+				.getResultList();
+		//return null;
 	}
 
-	@Override
-	public void save(Object save) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete(Object del) {
-		// TODO Auto-generated method stub
-
-	}
 }

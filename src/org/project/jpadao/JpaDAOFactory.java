@@ -5,10 +5,6 @@ package org.project.jpadao;
 
 import org.project.dao.CustomerDAO;
 import org.project.dao.DAOFactory;
-import static org.project.jpadao.ReservationJpaDAO.*;
-import static org.project.jpadao.CustomerJpaDAO.*;
-import static org.project.jpadao.RoomJpaDAO.*;
-import static org.project.jpadao.OfferJpaDAO.*;
 import org.project.dao.OfferDAO;
 import org.project.dao.ReservationDAO;
 import org.project.dao.RoomDAO;
@@ -17,7 +13,6 @@ import org.project.dao.RoomDAO;
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
  * @author pkourtis
- * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
  */
 public class JpaDAOFactory extends DAOFactory {
 	/** 
@@ -29,7 +24,7 @@ public class JpaDAOFactory extends DAOFactory {
 	public CustomerDAO getCustomerDAO() {
 		// begin-user-code
 		// TODO Auto-generated method stub
-		return null;
+		return new CustomerJpaDAO();
 		// end-user-code
 	}
 
@@ -42,7 +37,7 @@ public class JpaDAOFactory extends DAOFactory {
 	public ReservationDAO getReservationDAO() {
 		// begin-user-code
 		// TODO Auto-generated method stub
-		return null;
+		return new ReservationJpaDAO();
 		// end-user-code
 	}
 
@@ -55,7 +50,7 @@ public class JpaDAOFactory extends DAOFactory {
 	public RoomDAO getRoomDAO() {
 		// begin-user-code
 		// TODO Auto-generated method stub
-		return null;
+		return new RoomJpaDAO();
 		// end-user-code
 	}
 
@@ -68,7 +63,7 @@ public class JpaDAOFactory extends DAOFactory {
 	public OfferDAO getOfferDAO() {
 		// begin-user-code
 		// TODO Auto-generated method stub
-		return null;
+		return new OfferJpaDAO();
 		// end-user-code
 	}
 }
