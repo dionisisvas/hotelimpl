@@ -11,7 +11,7 @@ import javax.persistence.*;
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
  * @author katsivelhsp
- * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+ * 
  */
 @Entity
 @Table(name="offers")
@@ -32,6 +32,23 @@ public class Offer {
 	private Date startingDate;
 
 	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Temporal(TemporalType.DATE)
+	@Column(name="endingDate",nullable=false)
+	private Date endingDate;
+	
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Column(name="percentage",nullable=false)
+	private Double percentage;
+	
+	/** 
 	 * @return the startingDate
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
@@ -51,14 +68,6 @@ public class Offer {
 		// end-user-code
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Temporal(TemporalType.DATE)
-	@Column(name="endingDate",nullable=false)
-	private Date endingDate;
 
 	/** 
 	 * @return the endingDate
@@ -79,14 +88,6 @@ public class Offer {
 		this.endingDate = endingDate;
 		// end-user-code
 	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Column(name="percentage",nullable=false)
-	private Double percentage;
 
 	/** 
 	 * @return the percentage
@@ -152,7 +153,6 @@ public class Offer {
 		// TODO Auto-generated constructor stub
 		// end-user-code
 	}
-
 
 	/** 
 	 * <!-- begin-UML-doc -->

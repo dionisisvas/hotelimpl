@@ -9,7 +9,7 @@ import javax.persistence.*;
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
  * @author katsivelhsp
- * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+ * 
  */
 @Entity
 @Table(name="rooms")
@@ -23,11 +23,45 @@ public class Room {
 	/** 
 	 * <!-- begin-UML-doc -->
 	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 * 
 	 */
+	@Enumerated(EnumType.STRING)
 	@Column(name="bed")
 	private BedType bed;
 
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Enumerated(EnumType.STRING)
+	@Column(name="type",nullable=false)
+	private RoomType type;
+	
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Column(name="availabity", nullable=false)
+	private boolean availability;
+	
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Column(name="pricePerDay",nullable=false)
+	private Double pricePerDay;
+
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Column(name="roomNumber",nullable=false)
+	private Integer roomNumber;
+	
 	/** 
 	 * @return the bed
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
@@ -47,15 +81,6 @@ public class Room {
 		this.bed = bed;
 		// end-user-code
 	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Enumerated(EnumType.STRING)
-	@Column(name="type",nullable=false)
-	private RoomType type;
 
 	/** 
 	 * @return the type
@@ -78,14 +103,6 @@ public class Room {
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Column(name="availabity", nullable=false)
-	private boolean availability;
-
-	/** 
 	 * @return the availability
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
@@ -104,14 +121,6 @@ public class Room {
 		this.availability = availability;
 		// end-user-code
 	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Column(name="pricePerDay",nullable=false)
-	private Double pricePerDay;
 
 	/** 
 	 * @return the pricePerDay
@@ -133,13 +142,6 @@ public class Room {
 		// end-user-code
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Column(name="roomNumber",nullable=false)
-	private Integer roomNumber;
 
 	/** 
 	 * @return the roomNumber

@@ -5,7 +5,6 @@ package org.project.domain;
 
 import java.sql.Date;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -27,79 +26,39 @@ import javax.persistence.Transient;
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
  * @author katsivelhsp
- * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+ * 
  */
 @Entity
 @Table(name="reservations")
 public class Reservation {
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
+
 	@Id
 	@Column(name="reservationId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer reservationID;
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
+
 	@Transient
 	private Double totalPrice;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
 	@Column(name="paid")
 	private Boolean paid;
-	
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
+
 	@Temporal(TemporalType.DATE)
 	@Column(name="startDate", nullable=false)
 	private Date startDate;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
 	@Temporal(TemporalType.DATE)
 	@Column(name="endDate", nullable=false)
 	private Date endDate;
-	
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
+
 	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY )
 	@JoinColumn(name="offerId",nullable=true)
 	private Offer offer;
-	
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	
+
 	@OneToMany(cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
 	@JoinColumn (name="roomId")
 	private Set<Room> room = new HashSet<Room>();
-	
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	
+
 	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY )
 	@JoinColumn(name="customerId",nullable=false)
 	private Customer customer;
@@ -112,16 +71,7 @@ public class Reservation {
 	public Double getTotalPrice() {
 		// begin-user-code
 		// TODO Auto-generated method stub
-		//Offer offer = new Offer();
-		Iterator<Room> roomIt = room.iterator();
-		double totalPrice = 0.0;
-		while (roomIt.hasNext())
-		{
-			Room curRoom = roomIt.next();
-			//TODO Pros epomenh omada: curRoom.getRoomType() needs to be used
-			//totalPrice -= offer.getOffer();
-			//totalPrice += curRoom.getCost();
-		}
+		
 		return totalPrice;
 		// end-user-code
 	}
@@ -132,6 +82,18 @@ public class Reservation {
 	 */
 	public void setTotalPrice(Double totalPrice) {
 		// begin-user-code
+		Double pricePerRoom = 0.0;
+		RoomType roomType;
+		while (room.iterator().hasNext())
+		{
+			pricePerRoom = room.iterator().next().getPricePerDay();
+			room.iterator().remove();
+			roomType = room.iterator().next().getType();
+			if(roomType == offer.getRoomType()){
+				pricePerRoom -= offer.getPercentage() * pricePerRoom;
+				totalPrice += pricePerRoom;
+			}
+		}
 		this.totalPrice = totalPrice;
 		// end-user-code
 	}
@@ -238,7 +200,7 @@ public class Reservation {
 
 	/** 
 	 * @return the room
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 * 
 	 */
 	public Set<Room> getRoom() {
 		// begin-user-code
@@ -248,14 +210,17 @@ public class Reservation {
 
 	/** 
 	 * @param room the room to set
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 * 
 	 */
 	public void setRoom(Set<Room> room) {
 		// begin-user-code
+		while (room.iterator().hasNext())
+		{
+			room.iterator().next().setAvailability(false);
+		}
 		this.room = room;
 		// end-user-code
 	}
-
 	/** 
 	 * @return the reservationID
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"

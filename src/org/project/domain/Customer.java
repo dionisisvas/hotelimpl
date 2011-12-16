@@ -9,11 +9,21 @@ import javax.persistence.*;
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
  * @author katsivelhsp
- * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+ * 
  */
 @Entity
 @Table(name="customers")
 public class Customer {
+	
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Id
+	@Column(name="customerId",length=200,nullable=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer customerID;
 	/** 
 	 * <!-- begin-UML-doc -->
 	 * <!-- end-UML-doc -->
@@ -21,6 +31,38 @@ public class Customer {
 	 */
 	@Column(name="firstName",nullable=false)
 	private String firstName;
+	
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Column(name="address",nullable=true)
+	private String address;
+	
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Column(name="email",nullable=true)
+	private String email;
+
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Column(name="phoneNumber",nullable=true)
+	private String phoneNumber;
+	
+	/** 
+	 * <!-- begin-UML-doc -->
+	 * <!-- end-UML-doc -->
+	 * 
+	 */
+	@Column(name="lastName",nullable=false)
+	private String lastName;
 
 	/** 
 	 * @return the firstName
@@ -43,14 +85,6 @@ public class Customer {
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Column(name="address",nullable=true)
-	private String address;
-
-	/** 
 	 * @return the address
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
@@ -69,14 +103,6 @@ public class Customer {
 		this.address = address;
 		// end-user-code
 	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Column(name="email",nullable=true)
-	private String email;
 
 	/** 
 	 * @return the email
@@ -99,14 +125,6 @@ public class Customer {
 	}
 
 	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Column(name="phoneNumber",nullable=true)
-	private String phoneNumber;
-
-	/** 
 	 * @return the phoneNumber
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
@@ -125,14 +143,6 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 		// end-user-code
 	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Column(name="lastName",nullable=false)
-	private String lastName;
 
 	/** 
 	 * @return the lastName
@@ -154,15 +164,6 @@ public class Customer {
 		// end-user-code
 	}
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	@Id
-	@Column(name="customerId",length=200,nullable=false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer customerID;
 
 	/** 
 	 * @return the idNum
