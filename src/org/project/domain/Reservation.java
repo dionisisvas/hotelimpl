@@ -3,7 +3,7 @@
  */
 package org.project.domain;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -70,31 +70,32 @@ public class Reservation {
 	
 	public Double getTotalPrice() {
 		// begin-user-code
-		// TODO Auto-generated method stub
-		
-		return totalPrice;
-		// end-user-code
-	}
-
-	/** 
-	 * @param totalPrice the totalPrice to set
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public void setTotalPrice(Double totalPrice) {
-		// begin-user-code
-		Double pricePerRoom = 0.0;
+		Room currRoom;
 		RoomType roomType;
+		Integer discountDays;
+		Integer fullPriceDays;
+		
+		Double pricePerRoom = 0.0;
+		Double pricePerDay = 0.0;
+		Double sum = 0.0;
+		
+		discountDays = getCommonDays(this.startDate,this.endDate,offer.getStartingDate(),offer.getEndingDate());
+		fullPriceDays = this.getDuration(startDate, endDate) - discountDays;
+		
 		while (room.iterator().hasNext())
 		{
-			pricePerRoom = room.iterator().next().getPricePerDay();
-			room.iterator().remove();
-			roomType = room.iterator().next().getType();
-			if(roomType == offer.getRoomType()){
-				pricePerRoom -= offer.getPercentage() * pricePerRoom;
-				totalPrice += pricePerRoom;
-			}
+			currRoom = room.iterator().next();
+			pricePerRoom = currRoom.getPricePerDay();
+			roomType = currRoom.getType();
+			
+			if(roomType == offer.getRoomType()) 
+				sum += (pricePerRoom - offer.getPercentage() * pricePerRoom) * discountDays + pricePerDay * fullPriceDays;
+			else
+				sum += pricePerRoom * fullPriceDays;
 		}
-		this.totalPrice = totalPrice;
+		
+		this.totalPrice = sum;
+		return totalPrice;
 		// end-user-code
 	}
 
@@ -263,7 +264,25 @@ public class Reservation {
 	public Integer getDuration(Date startDate, Date endDate) {
 		// begin-user-code
 		// TODO Auto-generated method stub
-		return null;
+		Integer duration;
+		duration = endDate.compareTo(startDate);
+		
+		return duration;
 		// end-user-code
+	}
+	
+	public Integer getCommonDays(Date resStart, Date resEnd, Date offStart, Date offEnd) {
+		Integer days = null;
+		
+		if(resStart.after(offStart) && resEnd.before(offEnd))
+			days = resEnd.compareTo(resStart);
+		else if(resStart.before(offStart) && resEnd.before(offEnd))
+			days = resEnd.compareTo(offStart);
+		else if(resStart.after(offStart) && resEnd.after(offEnd))
+			days = offEnd.compareTo(resStart);
+		else if(resStart.before(offStart) && resEnd.after(offEnd))
+			days = offEnd.compareTo(offStart);
+		
+		return days;
 	}
 }

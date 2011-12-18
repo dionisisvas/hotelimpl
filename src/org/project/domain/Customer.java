@@ -174,14 +174,4 @@ public class Customer {
 		return customerID;
 		// end-user-code
 	}
-
-	/** 
-	 * @param idNum the idNum to set
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public void setId(Integer id) {
-		// begin-user-code
-		this.customerID = id;
-		// end-user-code
-	}
 }

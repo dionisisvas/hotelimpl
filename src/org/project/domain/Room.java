@@ -19,53 +19,28 @@ public class Room {
 	@Column(name="roomId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer roomId;
-	
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * 
-	 */
+
 	@Enumerated(EnumType.STRING)
 	@Column(name="bed")
 	private BedType bed;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * 
-	 */
 	@Enumerated(EnumType.STRING)
 	@Column(name="type",nullable=false)
 	private RoomType type;
 	
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * 
-	 */
 	@Column(name="availabity", nullable=false)
 	private boolean availability;
 	
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * 
-	 */
 	@Column(name="pricePerDay",nullable=false)
 	private Double pricePerDay;
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * 
-	 */
 	@Column(name="roomNumber",nullable=false)
 	private Integer roomNumber;
+
+	public Integer getRoomId() {
+		return roomId;
+	}
 	
-	/** 
-	 * @return the bed
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
 	public BedType getBed() {
 		// begin-user-code
 		return bed;
@@ -124,7 +99,7 @@ public class Room {
 
 	/** 
 	 * @return the pricePerDay
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 * 
 	 */
 	public Double getPricePerDay() {
 		// begin-user-code
@@ -160,34 +135,6 @@ public class Room {
 	public void setRoomNumber(Integer roomNumber) {
 		// begin-user-code
 		this.roomNumber = roomNumber;
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param currResRoom
-	 * @return
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public Double getPricePerDay(Room currResRoom) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
-	}
-
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param currResRoom
-	 * @return
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public String getRoomType(Room currResRoom) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
 		// end-user-code
 	}
 }
