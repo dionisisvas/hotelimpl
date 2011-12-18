@@ -3,9 +3,18 @@
  */
 package org.project.jpadao;
 
+import org.project.domain.Customer;
+import org.project.domain.Reservation;
 import org.project.domain.Room;
 import org.project.dao.RoomDAO;
+
+import java.util.List;
+import java.util.Set;
 import java.util.SortedSet;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /** 
  * <!-- begin-UML-doc -->
@@ -15,22 +24,24 @@ import java.util.SortedSet;
  */
 public class RoomJpaDAO extends GenericJpaDAO<Room> implements RoomDAO {
 
-	/** 
-	 * (non-Javadoc)
-	 * @see RoomDAO#find(Integer reservationID)
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public SortedSet<Room> find(Integer reservationID) {
+	public Set<Room> findRoom(Integer reservationID) {
 		// begin-user-code
 		// TODO Auto-generated method stub
-		return null;
+		Reservation reservation = JPAUtil.getCurrentEntityManager().find(Reservation.class, reservationID);
+		return reservation.getRoom();
 		// end-user-code
 	}
 
 	@Override
-	public Object findAll() {
+	public List<Room> findAll() {
+		// begin-user-code
 		// TODO Auto-generated method stub
-		return null;
+		CriteriaBuilder builder = JPAUtil.getEntityManagerFactory().getCriteriaBuilder();
+		CriteriaQuery<Room> criteria = builder.createQuery(Room.class);
+		Root<Room> room = criteria.from(Room.class);
+		criteria.select(room);
+		return JPAUtil.getCurrentEntityManager().createQuery(criteria).getResultList();
+		// end-user-code
 	}
 
 }

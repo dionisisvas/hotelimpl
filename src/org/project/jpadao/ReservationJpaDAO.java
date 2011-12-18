@@ -3,6 +3,13 @@
  */
 package org.project.jpadao;
 
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+import org.project.domain.Customer;
 import org.project.domain.Reservation;
 import org.project.dao.ReservationDAO;
 
@@ -15,22 +22,24 @@ import org.project.dao.ReservationDAO;
 public class ReservationJpaDAO extends GenericJpaDAO<Reservation> implements
 		ReservationDAO {
 
-	/** 
-	 * (non-Javadoc)
-	 * @see ReservationDAO#findByID(Integer reservationID)
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
+	@Override
 	public Reservation findByID(Integer reservationID) {
 		// begin-user-code
 		// TODO Auto-generated method stub
-		return null;
+		Reservation reservation = JPAUtil.getCurrentEntityManager().find(Reservation.class, reservationID);
+		return reservation;
 		// end-user-code
 	}
 
 	@Override
-	public Object findAll() {
+	public List<Reservation> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		CriteriaBuilder builder = JPAUtil.getEntityManagerFactory().getCriteriaBuilder();
+		CriteriaQuery<Reservation> criteria = builder.createQuery(Reservation.class);
+		Root<Reservation> reservation = criteria.from(Reservation.class);
+		criteria.select(reservation);
+		return JPAUtil.getCurrentEntityManager().createQuery(criteria).getResultList();
+		//return null;
 	}
 
 }

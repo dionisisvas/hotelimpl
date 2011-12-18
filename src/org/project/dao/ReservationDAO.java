@@ -3,6 +3,8 @@
  */
 package org.project.dao;
 
+import java.util.List;
+
 import org.project.domain.Reservation;
 
 /** 
@@ -20,4 +22,6 @@ public interface ReservationDAO extends GenericDAO<Reservation> {
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
 	public Reservation findByID(Integer reservationID);
+	
+	public List<Reservation> findAll();
 }

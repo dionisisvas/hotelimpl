@@ -3,6 +3,8 @@
  */
 package org.project.dao;
 
+import java.util.List;
+
 import org.project.domain.Customer;
 
 /** 
@@ -19,6 +21,8 @@ public interface CustomerDAO extends GenericDAO<Customer> {
 	 * @return
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Customer find(Integer customerID);
+	public Customer findCustomer(Integer customerID);
+	
+	public List<Customer> findAll();
 
 }

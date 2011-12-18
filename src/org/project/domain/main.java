@@ -12,7 +12,7 @@ public class main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("KTELImpl");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("HotelImpl");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();

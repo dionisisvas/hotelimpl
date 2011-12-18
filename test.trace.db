@@ -1,0 +1,43 @@
+12-18 14:51:06 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "RESERVATIONS" not found; SQL statement:
+alter table reservations drop constraint FKB7D3362741841E88 [42102-135]
+12-18 14:51:06 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "RESERVATIONS" not found; SQL statement:
+alter table reservations drop constraint FKB7D336271768F182 [42102-135]
+12-18 14:51:06 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "ROOMS" not found; SQL statement:
+alter table rooms drop constraint FK67A9AF891F0AEF7 [42102-135]
+12-18 14:51:06 jdbc[2]: Connection not closed
+java.lang.Exception: Stack Trace
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:95)
+	at org.h2.Driver.connect(Driver.java:58)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at org.hibernate.connection.DriverManagerConnectionProvider.getConnection(DriverManagerConnectionProvider.java:133)
+	at org.hibernate.cfg.SettingsFactory.buildSettings(SettingsFactory.java:114)
+	at org.hibernate.cfg.Configuration.buildSettingsInternal(Configuration.java:2163)
+	at org.hibernate.cfg.Configuration.buildSettings(Configuration.java:2159)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1383)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:954)
+	at org.hibernate.ejb.Ejb3Configuration.buildEntityManagerFactory(Ejb3Configuration.java:887)
+	at org.hibernate.ejb.HibernatePersistence.createEntityManagerFactory(HibernatePersistence.java:56)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:150)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:70)
+	at org.project.domain.main.main(main.java:15)
+12-18 14:52:26 jdbc[2]: Connection not closed
+java.lang.Exception: Stack Trace
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:95)
+	at org.h2.Driver.connect(Driver.java:58)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at org.hibernate.connection.DriverManagerConnectionProvider.getConnection(DriverManagerConnectionProvider.java:133)
+	at org.hibernate.cfg.SettingsFactory.buildSettings(SettingsFactory.java:114)
+	at org.hibernate.cfg.Configuration.buildSettingsInternal(Configuration.java:2163)
+	at org.hibernate.cfg.Configuration.buildSettings(Configuration.java:2159)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1383)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:954)
+	at org.hibernate.ejb.Ejb3Configuration.buildEntityManagerFactory(Ejb3Configuration.java:887)
+	at org.hibernate.ejb.HibernatePersistence.createEntityManagerFactory(HibernatePersistence.java:56)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:150)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:70)
+	at org.project.domain.main.main(main.java:15)

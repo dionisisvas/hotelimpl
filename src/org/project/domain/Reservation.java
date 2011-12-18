@@ -44,15 +44,15 @@ public class Reservation {
 	private Boolean paid;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="startDate", nullable=false)
+	@Column(name="startDate")
 	private Date startDate;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="endDate", nullable=false)
+	@Column(name="endDate")
 	private Date endDate;
 
 	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY )
-	@JoinColumn(name="offerId",nullable=true)
+	@JoinColumn(name="offerId")
 	private Offer offer;
 
 	@OneToMany(cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
@@ -60,7 +60,7 @@ public class Reservation {
 	private Set<Room> room = new HashSet<Room>();
 
 	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY )
-	@JoinColumn(name="customerId",nullable=false)
+	@JoinColumn(name="customerId")
 	private Customer customer;
 	
 	/** 
