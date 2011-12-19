@@ -34,13 +34,12 @@ public class PaymentPresenter {
         if (reservation == null) 
         {
             view.showError("Reservation not found");
-            showReservation("","","","");            
+            showReservation("","","");            
             reservationFound = false;            
         } 
         else 
         {
-            showReservation(reservation.getReservationID().toString(), getStatus(reservation.isPaid()), 
-            				reservation.getStartDate() + " - " + reservation.getEndDate(), "");
+            showReservation(reservation.getReservationID().toString(), getStatus(reservation.isPaid()), "");
             reservationFound = true;            
         }
         
@@ -65,10 +64,9 @@ public class PaymentPresenter {
 	
 	// SHOW
 	//private giati mono edw mesa 8a tis xrhsimopoiei
-	private void showReservation(String code, String status, String date, String cost) {
+	private void showReservation(String code, String status, String cost) {
 		view.setReservationCode(code);
 		view.setReservationStatus(status);		
-		view.setReservationDate(date);
 		view.setReservationCost(cost);
 	}
 	

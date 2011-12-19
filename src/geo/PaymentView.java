@@ -12,8 +12,6 @@ public interface PaymentView extends View {
 
 	void setReservationStatus(String status);
 
-	void setReservationDate(String date);
-
 	void setReservationCost(String cost);
 
 
