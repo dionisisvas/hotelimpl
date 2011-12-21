@@ -41,3 +41,215 @@ java.lang.Exception: Stack Trace
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:150)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:70)
 	at org.project.domain.main.main(main.java:15)
+12-21 00:37:53 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Cannot parse date constant "2011/12/30", cause: "format yyyy-mm-dd"; SQL statement:
+INSERT INTO RESERVATIONS VALUES(101, '2011/12/30', 1,false,1, '2011/12/22') -- (101, '2011/12/30', 1, FALSE, 1, '2011/12/22') [90009-143]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.util.DateTimeUtils.parseDateTime(DateTimeUtils.java:257)
+	at org.h2.value.ValueDate.parseDate(ValueDate.java:45)
+	at org.h2.value.Value.convertTo(Value.java:756)
+	at org.h2.table.Column.convert(Column.java:146)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:110)
+	at org.h2.command.dml.Insert.update(Insert.java:83)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:70)
+	at org.h2.command.Command.executeUpdate(Command.java:199)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:177)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:970)
+	at org.h2.server.web.WebThread.process(WebThread.java:161)
+	at org.h2.server.web.WebThread.run(WebThread.java:88)
+	at java.lang.Thread.run(Thread.java:722)
+12-21 00:38:27 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Cannot parse date constant "FALSE", cause: "format yyyy-mm-dd"; SQL statement:
+INSERT INTO RESERVATIONS VALUES(101, '2011-12-30', 1,false,1, '2011-12-22') -- (101, '2011-12-30', 1, FALSE, 1, '2011-12-22') [90009-143]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.util.DateTimeUtils.parseDateTime(DateTimeUtils.java:257)
+	at org.h2.value.ValueDate.parseDate(ValueDate.java:45)
+	at org.h2.value.Value.convertTo(Value.java:756)
+	at org.h2.table.Column.convert(Column.java:146)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:110)
+	at org.h2.command.dml.Insert.update(Insert.java:83)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:70)
+	at org.h2.command.Command.executeUpdate(Command.java:199)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:177)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:970)
+	at org.h2.server.web.WebThread.process(WebThread.java:161)
+	at org.h2.server.web.WebThread.run(WebThread.java:88)
+	at java.lang.Thread.run(Thread.java:722)
+12-21 00:39:34 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Cannot parse date constant "1969", cause: "format yyyy-mm-dd"; SQL statement:
+INSERT INTO RESERVATIONS VALUES(101, 2011-12-30, 1,false,1, 2011-12-22) -- (101, 1969, 1, FALSE, 1, 1977) [90009-143]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.util.DateTimeUtils.parseDateTime(DateTimeUtils.java:257)
+	at org.h2.value.ValueDate.parseDate(ValueDate.java:45)
+	at org.h2.value.Value.convertTo(Value.java:756)
+	at org.h2.table.Column.convert(Column.java:146)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:110)
+	at org.h2.command.dml.Insert.update(Insert.java:83)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:70)
+	at org.h2.command.Command.executeUpdate(Command.java:199)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:177)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:970)
+	at org.h2.server.web.WebThread.process(WebThread.java:161)
+	at org.h2.server.web.WebThread.run(WebThread.java:88)
+	at java.lang.Thread.run(Thread.java:722)
+12-21 00:43:09 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Cannot parse date constant "FALSE", cause: "format yyyy-mm-dd"; SQL statement:
+INSERT INTO RESERVATIONS VALUES(1,'2011-12-30',1,false,1,'2011-12-22') -- (1, '2011-12-30', 1, FALSE, 1, '2011-12-22') [90009-143]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.util.DateTimeUtils.parseDateTime(DateTimeUtils.java:257)
+	at org.h2.value.ValueDate.parseDate(ValueDate.java:45)
+	at org.h2.value.Value.convertTo(Value.java:756)
+	at org.h2.table.Column.convert(Column.java:146)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:110)
+	at org.h2.command.dml.Insert.update(Insert.java:83)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:70)
+	at org.h2.command.Command.executeUpdate(Command.java:199)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:177)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:970)
+	at org.h2.server.web.WebThread.process(WebThread.java:161)
+	at org.h2.server.web.WebThread.run(WebThread.java:88)
+	at java.lang.Thread.run(Thread.java:722)
+12-21 00:44:50 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO RESERVATIONS VALUES('2011-12-30',false,'2011-12-22',101,1) [21002-143]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.message.DbException.get(DbException.java:133)
+	at org.h2.command.dml.Insert.prepare(Insert.java:205)
+	at org.h2.command.Parser.prepare(Parser.java:201)
+	at org.h2.command.Parser.prepareCommand(Parser.java:213)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:375)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1052)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:970)
+	at org.h2.server.web.WebThread.process(WebThread.java:161)
+	at org.h2.server.web.WebThread.run(WebThread.java:88)
+	at java.lang.Thread.run(Thread.java:722)
+12-21 00:44:55 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO RESERVATIONS VALUES('2011-12-30',false,'2011-12-22') [21002-143]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.message.DbException.get(DbException.java:133)
+	at org.h2.command.dml.Insert.prepare(Insert.java:205)
+	at org.h2.command.Parser.prepare(Parser.java:201)
+	at org.h2.command.Parser.prepareCommand(Parser.java:213)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:375)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1052)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:970)
+	at org.h2.server.web.WebThread.process(WebThread.java:161)
+	at org.h2.server.web.WebThread.run(WebThread.java:88)
+	at java.lang.Thread.run(Thread.java:722)
+12-21 00:55:28 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO CUSTOMERS( 'Hello'[*] , 101 , 'mplampla@foufoutos.gr' , 'John' , 'Foufoutos' , '696969'  )"; expected "identifier"; SQL statement:
+INSERT INTO CUSTOMERS( 'Hello' , 101 , 'mplampla@foufoutos.gr' , 'John' , 'Foufoutos' , '696969'  ) [42001-143]
+12-21 00:55:53 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO CUSTOMERS( 'Hello'[*], 101, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969'  )"; expected "identifier"; SQL statement:
+INSERT INTO CUSTOMERS( 'Hello', 101, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969'  ) [42001-143]
+12-21 00:56:07 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO CUSTOMERS( 'Hello'[*], 101, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969'  )"; expected "identifier"; SQL statement:
+INSERT INTO CUSTOMERS( 'Hello', 101, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969'  ) [42001-143]
+12-21 00:56:30 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO CUSTOMERS('Hello'[*], 101, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969')"; expected "identifier"; SQL statement:
+INSERT INTO CUSTOMERS('Hello', 101, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') [42001-143]
+12-21 00:56:44 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO CUSTOMERS('Hello'[*],101,'mplampla@foufoutos.gr','John','Foufoutos','696969')"; expected "identifier"; SQL statement:
+INSERT INTO CUSTOMERS('Hello',101,'mplampla@foufoutos.gr','John','Foufoutos','696969') [42001-143]
+12-21 00:57:26 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'Hello' (CUSTOMERID INTEGER DEFAULT (NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_0F3328DB_E29E_460D_964D_C9A4573C1882) NOT NULL NULL_TO_DEFAULT SEQUENCE PUBLIC.SYSTEM_SEQUENCE_0F3328DB_E29E_460D_964D_C9A4573C1882)"; SQL statement:
+INSERT INTO CUSTOMERS VALUES('Hello',101,'mplampla@foufoutos.gr','John','Foufoutos','696969') -- ('Hello', 101, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') [90021-143]
+12-21 00:58:34 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CUSTOMERS VALUES ('Hello', 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') [21002-143]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.message.DbException.get(DbException.java:133)
+	at org.h2.command.dml.Insert.prepare(Insert.java:205)
+	at org.h2.command.Parser.prepare(Parser.java:201)
+	at org.h2.command.Parser.prepareCommand(Parser.java:213)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:375)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1052)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:970)
+	at org.h2.server.web.WebThread.process(WebThread.java:161)
+	at org.h2.server.web.WebThread.run(WebThread.java:88)
+	at java.lang.Thread.run(Thread.java:722)
+12-21 00:58:45 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'Hello' (CUSTOMERID INTEGER DEFAULT (NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_0F3328DB_E29E_460D_964D_C9A4573C1882) NOT NULL NULL_TO_DEFAULT SEQUENCE PUBLIC.SYSTEM_SEQUENCE_0F3328DB_E29E_460D_964D_C9A4573C1882)"; SQL statement:
+INSERT INTO CUSTOMERS VALUES ('Hello', 1, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') -- ('Hello', 1, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') [90021-143]
+12-21 00:58:49 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'Hello' (CUSTOMERID INTEGER DEFAULT (NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_0F3328DB_E29E_460D_964D_C9A4573C1882) NOT NULL NULL_TO_DEFAULT SEQUENCE PUBLIC.SYSTEM_SEQUENCE_0F3328DB_E29E_460D_964D_C9A4573C1882)"; SQL statement:
+INSERT INTO CUSTOMERS VALUES ('Hello', 1, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') -- ('Hello', 1, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') [90021-143]
+12-21 00:59:40 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'Hello' (CUSTOMERID INTEGER DEFAULT (NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_0F3328DB_E29E_460D_964D_C9A4573C1882) NOT NULL NULL_TO_DEFAULT SEQUENCE PUBLIC.SYSTEM_SEQUENCE_0F3328DB_E29E_460D_964D_C9A4573C1882)"; SQL statement:
+INSERT INTO CUSTOMERS VALUES('Hello', 1, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') -- ('Hello', 1, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') [90021-143]
+12-21 00:59:48 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'Hello' (CUSTOMERID INTEGER DEFAULT (NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_0F3328DB_E29E_460D_964D_C9A4573C1882) NOT NULL NULL_TO_DEFAULT SEQUENCE PUBLIC.SYSTEM_SEQUENCE_0F3328DB_E29E_460D_964D_C9A4573C1882)"; SQL statement:
+INSERT INTO CUSTOMERS VALUES('Hello', 1, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') -- ('Hello', 1, 'mplampla@foufoutos.gr', 'John', 'Foufoutos', '696969') [90021-143]
+12-21 01:01:10 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO CUSTOMERS VALUES(1,'Hello','foufoutos@dada.gr','John'.[*]'Foufoutos','696969')"; expected ")"; SQL statement:
+INSERT INTO CUSTOMERS VALUES(1,'Hello','foufoutos@dada.gr','John'.'Foufoutos','696969') [42001-143]
+12-21 01:01:22 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO CUSTOMERS VALUES(1,'Hello','foufoutos@dada.gr','John'.[*]'Foufoutos','696969')"; expected ")"; SQL statement:
+INSERT INTO CUSTOMERS VALUES(1,'Hello','foufoutos@dada.gr','John'.'Foufoutos','696969') [42001-143]
+12-21 01:12:03 jdbc[3]: SQLException
+org.h2.jdbc.JdbcSQLException: Cannot parse date constant "1970", cause: "format yyyy-mm-dd"; SQL statement:
+INSERT INTO OFFERS VALUES(1,2011-12-29,0.1,'twobed',2011-12-20) -- (1, 1970, 0.1, 'twobed', 1979) [90009-143]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.util.DateTimeUtils.parseDateTime(DateTimeUtils.java:257)
+	at org.h2.value.ValueDate.parseDate(ValueDate.java:45)
+	at org.h2.value.Value.convertTo(Value.java:756)
+	at org.h2.table.Column.convert(Column.java:146)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:110)
+	at org.h2.command.dml.Insert.update(Insert.java:83)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:70)
+	at org.h2.command.Command.executeUpdate(Command.java:199)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:177)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:970)
+	at org.h2.server.web.WebThread.process(WebThread.java:161)
+	at org.h2.server.web.WebThread.run(WebThread.java:88)
+	at java.lang.Thread.run(Thread.java:722)

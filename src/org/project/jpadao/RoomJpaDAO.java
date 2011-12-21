@@ -44,4 +44,10 @@ public class RoomJpaDAO extends GenericJpaDAO<Room> implements RoomDAO {
 		// end-user-code
 	}
 
+	@Override
+	public Set<Room> findFreeRooms() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

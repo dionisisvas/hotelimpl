@@ -22,4 +22,6 @@ public interface RoomDAO extends GenericDAO<Room> {
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
 	public Set<Room> findRoom(Integer reservationID);
+
+	public Set<Room> findFreeRooms();
 }
