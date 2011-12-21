@@ -27,6 +27,8 @@ public interface ReservationView extends View{
 	
 	void setPresenter(ReservationPresenter presenter);
 	
+	void setPresenter(ReservationAdminPresenter presenter);
+	
 	void setReservatonActionEnabled(boolean enabled);
 
 	/** 
@@ -63,15 +65,15 @@ public interface ReservationView extends View{
 
 	public void setPaid(boolean b);
 
-	public String setCusAddress(String address);
+	public void setCusAddress(String address);
 
-	public String setCusFirstName(String firstName);
+	public void setCusFirstName(String firstName);
 
-	public String setCusLastName(String lastName);
+	public void setCusLastName(String lastName);
 
-	public String setCusEmail(String email);
+	public void setCusEmail(String email);
 
-	public String setCusPhoneNumber(String phoneNumber);
+	public void setCusPhoneNumber(String phoneNumber);
 
 	public String getCustomerCode();
 
@@ -79,5 +81,17 @@ public interface ReservationView extends View{
 
 	public void setAdminPresenter(
 			ReservationAdminPresenter reservationAdministrationView);
+
+	public String getCusAddress();
+
+	public String getCusFirstName();
+
+	public String getCusLastName();
+
+	public String getCusEmail();
+
+	public String getCusPhoneNumber();
+
+	
 
 }

@@ -72,11 +72,11 @@ public class ReservationPresenter {
 		DAOFactory.getFactory().getReservationDAO().save(reservation);
 		
 		//allagh stoixeiwn pelath
-		customer.setFirstName(view.setCusFirstName(firstName));
-		customer.setLastName(view.setCusLastName(lastName));
-		customer.setAddress(view.setCusAddress(address));
-		customer.setEmail(view.setCusEmail(email));
-		customer.setPhoneNumber(view.setCusPhoneNumber(phoneNumber));
+		customer.setFirstName(view.getCusFirstName());
+		customer.setLastName(view.getCusLastName());
+		customer.setAddress(view.getCusAddress());
+		customer.setEmail(view.getCusEmail());
+		customer.setPhoneNumber(view.getCusPhoneNumber());
 		DAOFactory.getFactory().getCustomerDAO().save(customer);//apo8hkeush allagwn stoixeiwn pelath
 	}
 	

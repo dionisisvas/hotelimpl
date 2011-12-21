@@ -11,6 +11,7 @@ public class ReservationAdminPresenter {
 	private ReservationView view;
 	private List<Reservation> reservation;
 	private Reservation currRes;
+	private Customer currCust;
 	private List<Customer> customer;
 	//constructor
 	public ReservationAdminPresenter(ReservationView adminView) {
@@ -30,7 +31,9 @@ public class ReservationAdminPresenter {
 		reservation = DAOFactory.getFactory().getReservationDAO().findAll();
 		customer = DAOFactory.getFactory().getCustomerDAO().findAll();
 		currRes = reservation.iterator().next();
+		currCust = customer.iterator().next();
 		//reservation.iterator().remove();
+		//customer.iterator().remove();
 		//emfanish stoixeiwn krathshs
 		while(reservation.iterator().hasNext()){
 			view.setReservation(currRes.getReservationID());
@@ -38,8 +41,8 @@ public class ReservationAdminPresenter {
 			view.setEndDate(currRes.getEndDate());
 			view.setPaid(currRes.isPaid());
 			//emfanish trexontwn stoixeiwn pelath
-			view.setCusLastName(customer.iterator().next().getLastName());
-			view.setCusFirstName(customer.iterator().next().getFirstName());
+			view.setCusLastName(currCust.getLastName());
+			view.setCusFirstName(currCust.getFirstName());
 			/**
 			view.setCusAddress(customer.iterator().next().getAddress());
 			view.setCusEmail(customer.iterator().next().getEmail());

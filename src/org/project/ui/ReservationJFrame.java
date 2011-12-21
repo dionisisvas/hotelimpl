@@ -7,10 +7,12 @@ import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
+import org.project.dao.DAOFactory;
 import org.project.service.ReservationService;
 
 
@@ -62,7 +64,7 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	public ReservationJFrame() {
 		super();
 		listModel = new DefaultListModel();
-	    listModel.addElement(presenter.showReservations());
+		//listModel.addElement(presenter.showReservations().getReservationCode());
 		initGUI();
 	}
 	
@@ -78,9 +80,14 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 			{
 				//ListModel jList1Model = new DefaultComboBoxModel( new String[] { "Item One", "Item Two" });
 				jList1 = new JList(listModel);
+				jList1.setModel(listModel);
 				jList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				jList1.setSelectedIndex(0);
-				//jList1.addListSelectionListener(this);
+			    //jList1.addListSelectionListener(this);
+				jList1.setVisibleRowCount(5);
+				jList1.getModel();
+			    JScrollPane listScrollPane = new JScrollPane(jList1);
+			    //jList1.addListSelectionListener(this);
 			    
 				getContentPane().add(jList1, new GridBagConstraints(0, 0, 4, 2, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 				//jList1.setModel(jList1Model);
@@ -116,6 +123,123 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 		// end-user-code
 	}
 
+	@Override
+	public void open() {
+		// TODO Auto-generated method stub
+		setVisible(true);
+		
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+		dispose();
+	}
+	
+	@Override
+	public void setPresenter(ReservationAdminPresenter presenter) {
+		this.presenter = presenter;
+	}
+
+	@Override
+	public void setReservation(Integer reservationID) {
+		listModel.addElement(reservationID);
+	}
+
+	@Override
+	public String getReservationCode() {
+		// TODO Auto-generated method stub
+		return presenter.showReservations().getReservationCode();
+	}
+
+	@Override
+	public void setStartDate(Date startDate) {
+		listModel.addElement(startDate);
+	}
+	public Date getStartDate(){
+		return null;
+	}
+
+	@Override
+	public void setEndDate(Date endDate) {
+		listModel.addElement(endDate);
+	}
+
+	@Override
+	public void setPaid(boolean b) {
+		listModel.addElement(b);
+	}
+	
+	@Override
+	public void setCusAddress(String address) {
+		
+	}
+
+	@Override
+	public void setCusFirstName(String firstName) {
+		listModel.addElement(firstName);
+	}
+
+	@Override
+	public void setCusLastName(String lastName) {
+		listModel.addElement(lastName);
+		
+	}
+
+	@Override
+	public void setCusEmail(String mail) {
+
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setCusPhoneNumber(String phoneNumber) {
+
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public String getCusAddress() {
+		return null;		
+	}
+
+	@Override
+	public String getCusFirstName() {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getCusLastName() {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getCusEmail() {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getCusPhoneNumber() {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
 	public void setTotalPrice(Double totalPrice) {
 		// begin-user-code
 		// TODO Auto-generated method stub
@@ -130,18 +254,6 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 		// end-user-code
 	}
 
-	@Override
-	public void open() {
-		// TODO Auto-generated method stub
-		setVisible(true);
-		
-	}
-
-	@Override
-	public void close() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void showError(String message) {
@@ -154,13 +266,7 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void setPresenter(ReservationPresenter presenter) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void setReservatonActionEnabled(boolean enabled) {
 		// TODO Auto-generated method stub
@@ -173,71 +279,11 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 		
 	}
 
-	@Override
-	public void setReservation(Integer reservationID) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
-	@Override
-	public String getReservationCode() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setStartDate(Date startDate) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setEndDate(Date endDate) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPaid(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String setCusAddress(String address) {
-		return address;
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String setCusFirstName(String firstName) {
-		return firstName;
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String setCusLastName(String lastName) {
-		return lastName;
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String setCusEmail(String email) {
-		return email;
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String setCusPhoneNumber(String phoneNumber) {
-		return phoneNumber;
-		// TODO Auto-generated method stub
-		
-	}
-
+	
+	
+	
 	@Override
 	public String getCustomerCode() {
 		// TODO Auto-generated method stub
@@ -266,6 +312,12 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 		// begin-user-code
 		return reservationService;
 		// end-user-code
+	}
+
+	@Override
+	public void setPresenter(ReservationPresenter presenter) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
