@@ -27,27 +27,33 @@ public class ReservationAdminPresenter {
         view.close();
     }
 	
-	public ReservationView showReservations(){
+	public void showReservations(){
 		reservation = DAOFactory.getFactory().getReservationDAO().findAll();
 		customer = DAOFactory.getFactory().getCustomerDAO().findAll();
-		currRes = reservation.iterator().next();
-		currCust = customer.iterator().next();
-		//reservation.iterator().remove();
-		//customer.iterator().remove();
 		//emfanish stoixeiwn krathshs
+		int index = 0;
+		reservation.iterator().remove();
+		customer.iterator().remove();
 		while(reservation.iterator().hasNext()){
-			view.setReservation(currRes.getReservationID());
-			view.setStartDate(currRes.getStartDate());
-			view.setEndDate(currRes.getEndDate());
-			view.setPaid(currRes.isPaid());
+			currRes = reservation.iterator().next();
+			currCust = customer.iterator().next();
+			view.setReservation(currRes.getReservationID(),index);
+			view.setStartDate(currRes.getStartDate(),index);
+			view.setEndDate(currRes.getEndDate(),index);
+			view.setPaid(currRes.isPaid(),index);
 			//emfanish trexontwn stoixeiwn pelath
-			view.setCusLastName(currCust.getLastName());
-			view.setCusFirstName(currCust.getFirstName());
+			view.setCusLastName(currCust.getLastName(),index);
+			view.setCusFirstName(currCust.getFirstName(),index);
+			index++;
 			/**
 			view.setCusAddress(customer.iterator().next().getAddress());
 			view.setCusEmail(customer.iterator().next().getEmail());
 			view.setCusPhoneNumber(customer.iterator().next().getPhoneNumber()); */
 		}
-		return view;
+		
+	}
+	public int reservationsListSize(){
+		reservation = DAOFactory.getFactory().getReservationDAO().findAll();
+		return reservation.size();
 	}
 }

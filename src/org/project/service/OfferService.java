@@ -3,7 +3,7 @@
  */
 package org.project.service;
 
-import java.sql.Date;
+import java.util.Calendar;
 
 import org.project.dao.DAOFactory;
 import org.project.dao.OfferDAO;
@@ -52,7 +52,7 @@ public class OfferService {
 		// end-user-code
 	}
 
-	public void insertDates(OfferView view, Date startingDate, Date endingDate) {
+	public void insertDates(OfferView view, Calendar startingDate, Calendar endingDate) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 		view.setStartingDate(startingDate);
@@ -79,27 +79,33 @@ public class OfferService {
 	}
 
 	
-	public void createOffer(OfferView view, Date startingDate, Date endingDate, RoomType roomType, double percentage) {
+	public void createOffer(OfferView view, Calendar startingDate, Calendar endingDate, RoomType roomType, double percentage) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 		Offer currentOffer = new Offer (startingDate, endingDate, roomType, percentage);
-		/*if (offerExists(startingDate, endingDate) == false) {
+		if (offerExists(startingDate, endingDate, roomType) == false) {
 			offerDAO.save(currentOffer);
 			
 			}else{ view.showWarning("Warning");
-		}*/
+		}
 		// end-user-code
 	}
 
-	
-	//public boolean offerExists(RoomType roomType, Date startingDate, Date endingDate){
-		//if(OfferDAO.findOffer(roomType, startingDate, endingDate)!=null){
-			//ylopoihsh me for klp gia oles tis meres
-		//}
-		//tsekarei an yparxei prosfora sti sygkekrimeni hmerominia
-		//prepei na ftiaxtei methodos sto dao
-		//return false;
-	//}
+	//Method that checks if an offer exists for the same type of rooms for the selected dates or
+	//for days between the selected ones
+	public boolean offerExists(Calendar startingDate, Calendar endingDate, RoomType roomType){
+		if(offerDAO.findOfferByStartingDate(roomType, startingDate)!=null){
+			return true;
+		}else{
+			while (startingDate.equals(endingDate)!=true){
+				startingDate.add(Calendar.DATE, 1);
+				if (offerDAO.findOfferByStartingDate(roomType, startingDate)!=null){
+					return true;
+				}
+			}
+		return false;
+		}
+	}
 	
 }
 

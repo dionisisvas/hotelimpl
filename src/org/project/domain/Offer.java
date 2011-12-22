@@ -3,9 +3,19 @@
  */
 package org.project.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /** 
  * <!-- begin-UML-doc -->
@@ -29,7 +39,7 @@ public class Offer {
 	 */
 	@Temporal(TemporalType.DATE)
 	@Column(name="startingDate",nullable=false)
-	private Date startingDate;
+	private Calendar startingDate;
 
 	/** 
 	 * <!-- begin-UML-doc -->
@@ -38,7 +48,7 @@ public class Offer {
 	 */
 	@Temporal(TemporalType.DATE)
 	@Column(name="endingDate",nullable=false)
-	private Date endingDate;
+	private Calendar endingDate;
 	
 	/** 
 	 * <!-- begin-UML-doc -->
@@ -57,7 +67,7 @@ public class Offer {
 	 * @param percentage
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Offer(Date startingDate, Date endingDate,
+	public Offer(Calendar startingDate, Calendar endingDate,
 			RoomType roomType, double percentage) {
 		// begin-user-code
 		// TODO Auto-generated constructor stub
@@ -73,7 +83,7 @@ public class Offer {
 	 * @return the startingDate
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Date getStartingDate() {
+	public Calendar getStartingDate() {
 		// begin-user-code
 		return startingDate;
 		// end-user-code
@@ -83,7 +93,7 @@ public class Offer {
 	 * @param startingDate the startingDate to set
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void setStartingDate(Date startingDate) {
+	public void setStartingDate(Calendar startingDate) {
 		// begin-user-code
 		this.startingDate = startingDate;
 		// end-user-code
@@ -94,7 +104,7 @@ public class Offer {
 	 * @return the endingDate
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Date getEndingDate() {
+	public Calendar getEndingDate() {
 		// begin-user-code
 		return endingDate;
 		// end-user-code

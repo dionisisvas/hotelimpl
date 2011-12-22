@@ -3,7 +3,7 @@
  */
 package org.project.jpadao;
 
-import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -32,10 +32,10 @@ public class OfferJpaDAO extends GenericJpaDAO<Offer> implements OfferDAO {
 	 }
 	/** 
 	 * (non-Javadoc)
-	 * @see OfferDAO#findOffer(Room currResRoom, Date startDate, Date endDate)
+	 * @see OfferDAO#findOffer(Room currResRoom, Calendar startDate, Calendar endDate)
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Offer findOffer(RoomType type, Date startDate, Date endDate) {
+	public Offer findOffer(RoomType type, Calendar startDate, Calendar endDate) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 		String jpql = "select o from Offer o where o.startingDate = :startDate AND o.roomType=:type AND o.endingDate=:endDate";
@@ -43,7 +43,16 @@ public class OfferJpaDAO extends GenericJpaDAO<Offer> implements OfferDAO {
 		return (Offer) qry.getSingleResult();
 		// end-user-code
 	}
-
+	
+	
+	public List<Offer> findOfferByStartingDate(RoomType type, Calendar startDate) {
+		// begin-user-code
+		// TODO Auto-generated method stub
+		String jpql = "select o from Offer o where o.startingDate = :startDate AND o.roomType=:type";
+        Query qry = JPAUtil.getCurrentEntityManager().createQuery(jpql).setParameter("starDate", startDate).setParameter("type", type); 
+		return (Offer) qry.getSingleResult();
+		// end-user-code
+	}
 	
 	
 }

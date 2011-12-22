@@ -1,4 +1,4 @@
-package cu;
+package org.project.ui;
 
 public interface CustomerModificationView extends View {
 

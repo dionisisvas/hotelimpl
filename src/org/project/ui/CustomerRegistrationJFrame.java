@@ -1,4 +1,4 @@
-package cu;
+package org.project.ui;
 import info.clearthought.layout.TableLayout;
 
 import java.awt.event.ActionEvent;

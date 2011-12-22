@@ -3,7 +3,8 @@
  */
 package org.project.ui;
 
-import java.sql.Date;
+import java.util.Calendar;
+
 import org.project.domain.RoomType;
 
 /** 
@@ -19,7 +20,7 @@ public interface OfferView {
 	 * @param startingDate
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void setStartingDate(Date startingDate);
+	public void setStartingDate(Calendar startingDate);
 
 	/** 
 	 * <!-- begin-UML-doc -->
@@ -27,7 +28,7 @@ public interface OfferView {
 	 * @param endingDate
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void setEndingDate(Date endingDate);
+	public void setEndingDate(Calendar endingDate);
 
 	/** 
 	 * <!-- begin-UML-doc -->

@@ -3,9 +3,10 @@
  */
 package org.project.ui;
 
-import org.project.service.OfferService;
-import java.sql.Date;
+import java.util.Calendar;
+
 import org.project.domain.RoomType;
+import org.project.service.OfferService;
 
 /** 
  * <!-- begin-UML-doc -->
@@ -43,10 +44,10 @@ public class OfferForm implements OfferView {
 
 	/** 
 	 * (non-Javadoc)
-	 * @see OfferView#setStartingDate(Date startingDate)
+	 * @see OfferView#setStartingDate(Calendar startingDate)
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void setStartingDate(Date startingDate) {
+	public void setStartingDate(Calendar startingDate) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 
@@ -55,10 +56,10 @@ public class OfferForm implements OfferView {
 
 	/** 
 	 * (non-Javadoc)
-	 * @see OfferView#setEndingDate(Date endingDate)
+	 * @see OfferView#setEndingDate(Calendar endingDate)
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void setEndingDate(Date endingDate) {
+	public void setEndingDate(Calendar endingDate) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 

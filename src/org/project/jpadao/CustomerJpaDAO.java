@@ -36,4 +36,16 @@ public class CustomerJpaDAO extends GenericJpaDAO<Customer> implements
 		//return null;
 	}
 
+	@Override
+	public Customer findByID(int parseInt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteByID(int parseInt) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

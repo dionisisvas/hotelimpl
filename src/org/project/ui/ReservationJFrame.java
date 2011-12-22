@@ -3,6 +3,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.Date;
+import java.util.Enumeration;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -12,7 +13,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
-import org.project.dao.DAOFactory;
 import org.project.service.ReservationService;
 
 
@@ -64,40 +64,47 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	public ReservationJFrame() {
 		super();
 		listModel = new DefaultListModel();
-		//listModel.addElement(presenter.showReservations().getReservationCode());
+		jList1 = new JList(listModel);
+		//listModel.addElement("a");
 		initGUI();
 	}
 	
 	private void initGUI() {
 		try {
-			GridBagLayout thisLayout = new GridBagLayout();
-			thisLayout.rowWeights = new double[] {0.1, 0.1, 0.1, 0.1};
-			thisLayout.rowHeights = new int[] {7, 7, 7, 7};
-			thisLayout.columnWeights = new double[] {0.1, 0.1, 0.1, 0.1};
-			thisLayout.columnWidths = new int[] {7, 7, 7, 7};
-			getContentPane().setLayout(thisLayout);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{
+				GridBagLayout thisLayout = new GridBagLayout();
+				thisLayout.rowWeights = new double[] {0.1, 0.1, 0.1, 0.1};
+				thisLayout.rowHeights = new int[] {7, 7, 7, 7};
+				thisLayout.columnWeights = new double[] {0.1, 0.1, 0.1, 0.1};
+				thisLayout.columnWidths = new int[] {7, 7, 7, 7};
+				getContentPane().setLayout(thisLayout);
+				
 				//ListModel jList1Model = new DefaultComboBoxModel( new String[] { "Item One", "Item Two" });
-				jList1 = new JList(listModel);
+				
 				jList1.setModel(listModel);
+				
 				jList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				jList1.setSelectedIndex(0);
-			    //jList1.addListSelectionListener(this);
 				jList1.setVisibleRowCount(5);
-				jList1.getModel();
 			    JScrollPane listScrollPane = new JScrollPane(jList1);
 			    //jList1.addListSelectionListener(this);
-			    
 				getContentPane().add(jList1, new GridBagConstraints(0, 0, 4, 2, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
-				//jList1.setModel(jList1Model);
 				jList1.setLayout(null);
 				jList1.setPreferredSize(new java.awt.Dimension(408, 49));
+				
+				presenter.showReservations();
+				/**for (int i = 0; i<listModel.getSize();i++)
+					listModel.addElement(getReservationCode(i));*/
+				for(int i = 0; i < listModel.getSize(); i++){
+					listModel.add(i, getReservationCode(i));
+					listModel.getElementAt(i);
+				}
 			}
 			{
 				jButton1 = new JButton();
 				getContentPane().add(jButton1, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-				jButton1.setText("New");
+				jButton1.setText("New"+listModel.getSize());
 			}
 			{
 				jButton2 = new JButton();
@@ -118,21 +125,17 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	}
 	public void refresh() {
 		// begin-user-code
-		// TODO Auto-generated method stub
 
 		// end-user-code
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
 		setVisible(true);
-		
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
 		dispose();
 	}
 	
@@ -142,32 +145,43 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	}
 
 	@Override
-	public void setReservation(Integer reservationID) {
-		listModel.addElement(reservationID);
+	public void setReservation(Integer reservationID, int index) {
+			presenter.showReservations();
+			listModel.add(index, reservationID);
 	}
 
 	@Override
-	public String getReservationCode() {
-		// TODO Auto-generated method stub
-		return presenter.showReservations().getReservationCode();
+	public String getReservationCode(int index) {
+		return listModel.getElementAt(index).toString();
 	}
 
 	@Override
-	public void setStartDate(Date startDate) {
-		listModel.addElement(startDate);
+	public void setStartDate(Date startDate, int index) {
+		//for(int i = 0; i<presenter.reservationsListSize(); i++)
+			listModel.add(index,startDate);
 	}
-	public Date getStartDate(){
-		return null;
-	}
-
-	@Override
-	public void setEndDate(Date endDate) {
-		listModel.addElement(endDate);
+	public String getStartDate(){
+		return jList1.getModel().toString();
 	}
 
 	@Override
-	public void setPaid(boolean b) {
-		listModel.addElement(b);
+	public void setEndDate(Date endDate, int index) {
+		//for(int i = 0; i<presenter.reservationsListSize(); i++)
+			listModel.add(index,endDate);
+	}
+	
+	public String getEndDate(){
+		return jList1.getModel().toString();
+	}
+
+	@Override
+	public void setPaid(boolean b, int index) {
+		//for(int i = 0; i<presenter.reservationsListSize(); i++)
+			listModel.add(index,b);
+	}
+	
+	public String getPaid() {
+		return jList1.getModel().toString();
 	}
 	
 	@Override
@@ -176,61 +190,52 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	}
 
 	@Override
-	public void setCusFirstName(String firstName) {
-		listModel.addElement(firstName);
+	public void setCusFirstName(String firstName, int index) {
+		//for(int i = 0; i<presenter.reservationsListSize(); i++)
+			listModel.add(index,firstName);
 	}
 
 	@Override
-	public void setCusLastName(String lastName) {
-		listModel.addElement(lastName);
+	public void setCusLastName(String lastName, int index) {
+		//for(int i = 0; i<presenter.reservationsListSize(); i++)
+			listModel.add(index,lastName);
 		
 	}
 
 	@Override
 	public void setCusEmail(String mail) {
-
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void setCusPhoneNumber(String phoneNumber) {
 
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
 	public String getCusAddress() {
-		return null;		
+		return jList1.getModel().toString();		
 	}
 
 	@Override
 	public String getCusFirstName() {
-		return null;
-		// TODO Auto-generated method stub
+		return jList1.getModel().toString();
 		
 	}
 
 	@Override
 	public String getCusLastName() {
-		return null;
-		// TODO Auto-generated method stub
-		
+		return jList1.getModel().toString();
 	}
 
 	@Override
 	public String getCusEmail() {
-		return null;
-		// TODO Auto-generated method stub
-		
+		return jList1.getModel().toString();
 	}
 
 	@Override
 	public String getCusPhoneNumber() {
-		return null;
-		// TODO Auto-generated method stub
-		
+		return jList1.getModel().toString();		
 	}
 
 	
@@ -297,9 +302,8 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	}
 
 	@Override
-	public void setAdminPresenter(
-			ReservationAdminPresenter reservationAdministrationView) {
-		// TODO Auto-generated method stub
+	public void setAdminPresenter(ReservationAdminPresenter presenter) {
+		this.presenter = presenter;
 		
 	}
 
@@ -318,6 +322,12 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	public void setPresenter(ReservationPresenter presenter) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String getReservationCode() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

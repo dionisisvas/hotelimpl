@@ -12,7 +12,7 @@ class JPAUtil {
     
     public static EntityManagerFactory getEntityManagerFactory() {
         if (emf == null) {
-            emf = Persistence.createEntityManagerFactory("library");
+            emf = Persistence.createEntityManagerFactory("HotelImpl");
         }
         return emf;
     }

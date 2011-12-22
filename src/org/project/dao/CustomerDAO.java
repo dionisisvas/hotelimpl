@@ -25,4 +25,8 @@ public interface CustomerDAO extends GenericDAO<Customer> {
 	
 	public List<Customer> findAll();
 
+	public Customer findByID(int parseInt);
+
+	public void deleteByID(int parseInt);
+
 }

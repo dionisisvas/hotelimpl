@@ -55,21 +55,21 @@ public interface ReservationView extends View{
 
 	public void setRoomNumber(Integer roomNum);
 
-	public void setReservation(Integer reservationID);
+	public void setReservation(Integer reservationID,int index);
 
 	public String getReservationCode();
 
-	public void setStartDate(Date startDate);
+	public void setStartDate(Date startDate, int index);
 
-	public void setEndDate(Date endDate);
+	public void setEndDate(Date endDate, int index);
 
-	public void setPaid(boolean b);
+	public void setPaid(boolean b, int index);
 
 	public void setCusAddress(String address);
 
-	public void setCusFirstName(String firstName);
+	public void setCusFirstName(String firstName, int index);
 
-	public void setCusLastName(String lastName);
+	public void setCusLastName(String lastName, int index);
 
 	public void setCusEmail(String email);
 
@@ -91,6 +91,8 @@ public interface ReservationView extends View{
 	public String getCusEmail();
 
 	public String getCusPhoneNumber();
+
+	String getReservationCode(int index);
 
 	
 

@@ -3,10 +3,6 @@
  */
 package org.project.service;
 
-import static org.project.dao.DAOFactory.*;
-import static org.project.domain.Customer.*;
-import static org.project.dao.CustomerDAO.*;
-import org.project.ui.CustomerAdministrationView;
 
 /** 
  * <!-- begin-UML-doc -->

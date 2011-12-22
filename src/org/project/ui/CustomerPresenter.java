@@ -1,4 +1,4 @@
-package cu;
+package org.project.ui;
 
 import org.project.dao.DAOFactory;
 import org.project.domain.Customer;
@@ -45,6 +45,7 @@ public class CustomerPresenter {
         
         checkForModifyAction();
         checkForRemoveAction();
+        return customer;
     }
 	
 	public void removeCustomer() {

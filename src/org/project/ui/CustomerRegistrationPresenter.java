@@ -1,4 +1,4 @@
-package cu;
+package org.project.ui;
 
 import org.project.dao.DAOFactory;
 import org.project.domain.Customer;
