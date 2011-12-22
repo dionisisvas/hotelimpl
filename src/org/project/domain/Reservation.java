@@ -3,7 +3,7 @@
  */
 package org.project.domain;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,11 +45,11 @@ public class Reservation {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="startDate")
-	private Date startDate;
+	private Calendar startDate;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="endDate")
-	private Date endDate;
+	private Calendar endDate;
 
 	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY )
 	@JoinColumn(name="offerId")
@@ -123,7 +123,7 @@ public class Reservation {
 	 * @return the endDate
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Date getEndDate() {
+	public Calendar getEndDate() {
 		// begin-user-code
 		return endDate;
 		// end-user-code
@@ -133,7 +133,7 @@ public class Reservation {
 	 * @param endDate the endDate to set
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void setEndDate(Date endDate) {
+	public void setEndDate(Calendar endDate) {
 		// begin-user-code
 		this.endDate = endDate;
 		// end-user-code
@@ -143,7 +143,7 @@ public class Reservation {
 	 * @return the startDate
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Date getStartDate() {
+	public Calendar getStartDate() {
 		// begin-user-code
 		return startDate;
 		// end-user-code
@@ -153,7 +153,7 @@ public class Reservation {
 	 * @param startDate the startDate to set
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void setStartDate(Date startDate) {
+	public void setStartDate(Calendar startDate) {
 		// begin-user-code
 		this.startDate = startDate;
 		// end-user-code
@@ -261,7 +261,7 @@ public class Reservation {
 	 * @return
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public Integer getDuration(Date startDate, Date endDate) {
+	public Integer getDuration(Calendar startDate, Calendar endDate) {
 		// begin-user-code
 		// TODO Auto-generated method stub
 		Integer duration;
@@ -271,7 +271,7 @@ public class Reservation {
 		// end-user-code
 	}
 	
-	public Integer getCommonDays(Date resStart, Date resEnd, Date offStart, Date offEnd) {
+	public Integer getCommonDays(Calendar resStart, Calendar resEnd, Calendar offStart, Calendar offEnd) {
 		Integer days = null;
 		
 		if(resStart.after(offStart) && resEnd.before(offEnd))
