@@ -2,8 +2,7 @@ package org.project.ui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.Date;
-import java.util.Enumeration;
+import java.util.Calendar;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -156,7 +155,7 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	}
 
 	@Override
-	public void setStartDate(Date startDate, int index) {
+	public void setStartDate(Calendar startDate, int index) {
 		//for(int i = 0; i<presenter.reservationsListSize(); i++)
 			listModel.add(index,startDate);
 	}
@@ -165,7 +164,7 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	}
 
 	@Override
-	public void setEndDate(Date endDate, int index) {
+	public void setEndDate(Calendar endDate, int index) {
 		//for(int i = 0; i<presenter.reservationsListSize(); i++)
 			listModel.add(index,endDate);
 	}

@@ -1,6 +1,6 @@
 package org.project.ui;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.Set;
 
 import org.project.dao.DAOFactory;
@@ -27,7 +27,7 @@ public class ReservationPresenter {
 		// end-user-code
 	}
 	
-	public void createReservation(Integer reservationID, Date startDate, Date endDate,String firstName, String lastName, String phoneNumber, String email, String address) {
+	public void createReservation(Integer reservationID, Calendar startDate, Calendar endDate,String firstName, String lastName, String phoneNumber, String email, String address) {
 		// begin-user-code
 		Set<Room> freeRooms;
 		
@@ -61,7 +61,7 @@ public class ReservationPresenter {
 		DAOFactory.getFactory().getRoomDAO().save(currRoom);
 	}
 	
-	public void updateReservation(Date startDate, Date endDate,String firstName, String lastName, String phoneNumber, String email, String address){
+	public void updateReservation(Calendar startDate, Calendar endDate,String firstName, String lastName, String phoneNumber, String email, String address){
 		reservation = DAOFactory.getFactory().getReservationDAO().findByID(Integer.parseInt(view.getReservationCode()));
 		customer = DAOFactory.getFactory().getCustomerDAO().findCustomer(Integer.parseInt(view.getCustomerCode()));
 		

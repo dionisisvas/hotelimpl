@@ -3,6 +3,7 @@
  */
 package org.project.ui;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /** 
@@ -59,9 +60,9 @@ public interface ReservationView extends View{
 
 	public String getReservationCode();
 
-	public void setStartDate(Date startDate, int index);
+	public void setStartDate(Calendar startDate, int index);
 
-	public void setEndDate(Date endDate, int index);
+	public void setEndDate(Calendar endDate, int index);
 
 	public void setPaid(boolean b, int index);
 
