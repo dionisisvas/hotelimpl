@@ -63,7 +63,7 @@ public class ReservationPresenter {
 	
 	public void updateReservation(Calendar startDate, Calendar endDate,String firstName, String lastName, String phoneNumber, String email, String address){
 		reservation = DAOFactory.getFactory().getReservationDAO().findByID(Integer.parseInt(view.getReservationCode()));
-		customer = DAOFactory.getFactory().getCustomerDAO().findCustomer(Integer.parseInt(view.getCustomerCode()));
+		//customer = DAOFactory.getFactory().getCustomerDAO().findCustomer(Integer.parseInt(view.getCustomerCode()));
 		
 		//allagh stoixeiwn trexousas krathshs (ektos reservationID)
 		reservation.setStartDate(startDate);
@@ -72,11 +72,11 @@ public class ReservationPresenter {
 		DAOFactory.getFactory().getReservationDAO().save(reservation);
 		
 		//allagh stoixeiwn pelath
-		customer.setFirstName(view.getCusFirstName());
-		customer.setLastName(view.getCusLastName());
-		customer.setAddress(view.getCusAddress());
-		customer.setEmail(view.getCusEmail());
-		customer.setPhoneNumber(view.getCusPhoneNumber());
+		//customer.setFirstName(view.getCusFirstName());
+		//customer.setLastName(view.getCusLastName());
+		//customer.setAddress(view.getCusAddress());
+		//customer.setEmail(view.getCusEmail());
+		//customer.setPhoneNumber(view.getCusPhoneNumber());
 		DAOFactory.getFactory().getCustomerDAO().save(customer);//apo8hkeush allagwn stoixeiwn pelath
 	}
 	

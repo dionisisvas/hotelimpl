@@ -4,7 +4,6 @@
 package org.project.domain;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,7 +34,7 @@ public class Offer {
 	/** 
 	 * <!-- begin-UML-doc -->
 	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 *
 	 */
 	@Temporal(TemporalType.DATE)
 	@Column(name="startingDate",nullable=false)
@@ -79,6 +78,11 @@ public class Offer {
 	}
 
 	
+	public Integer getOfferId() {
+		return offerId;
+	}
+
+
 	/** 
 	 * @return the startingDate
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"

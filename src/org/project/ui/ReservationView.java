@@ -20,7 +20,6 @@ public interface ReservationView extends View{
 
 	public void refresh();
 
-
 	public void setTotalPrice(Double totalPrice);
 
 	public void showWarning(String msg);
@@ -28,8 +27,6 @@ public interface ReservationView extends View{
 	public void setRoomNumber(Integer roomNum);
 
 	public void setReservation(Integer reservationID,int columns, int rows);
-
-	public String getReservationCode();
 
 	public void setStartDate(Calendar startDate, int rows, int columns);
 
@@ -47,23 +44,25 @@ public interface ReservationView extends View{
 
 	public void setCusPhoneNumber(String phoneNumber);
 
-	public String getCustomerCode();
-
 	public void setReservationDeleted(boolean reservationFound);
 
 	public void setAdminPresenter(ReservationAdminPresenter presenter);
 
+	public String getReservationCode();
+	
+	/**public Integer[][] getCode();
+
 	public String getCusAddress();
 
 	public String getCusFirstName();
+	
+	public String getCustomerCode();
 
 	public String getCusLastName();
 
 	public String getCusEmail();
 
-	public String getCusPhoneNumber();
-
-	public Integer[][] getCode();
+	public String getCusPhoneNumber();*/
 
 	public void setPresenter(ReservationPresenter reservationPresenter);
 

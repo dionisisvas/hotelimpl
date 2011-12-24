@@ -3,16 +3,13 @@
  */
 package org.project.service;
 
-import static org.project.dao.DAOFactory.*;
-import static org.project.dao.ReservationDAO.*;
-import static org.project.dao.RoomDAO.*;
 import org.project.ui.StatisticView;
 
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
  * @author pkourtis
- * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+ * 
  */
 public class StatisticService {
 	/** 

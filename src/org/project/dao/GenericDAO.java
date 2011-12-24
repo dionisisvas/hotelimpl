@@ -3,20 +3,22 @@
  */
 package org.project.dao;
 
+import java.util.List;
+
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
  * @author pkourtis
- * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+ *
  */
 public interface GenericDAO<T> {
 	/** 
 	 * <!-- begin-UML-doc -->
 	 * <!-- end-UML-doc -->
 	 * @return
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 * 
 	 */
-	public Object findAll();
+	List<T> findAll();
 
 	/** 
 	 * <!-- begin-UML-doc -->

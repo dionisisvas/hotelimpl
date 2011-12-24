@@ -3,18 +3,16 @@
  */
 package org.project.jpadao;
 
-import org.project.domain.Customer;
-import org.project.domain.Reservation;
-import org.project.domain.Room;
-import org.project.dao.RoomDAO;
-
 import java.util.List;
 import java.util.Set;
-import java.util.SortedSet;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import org.project.dao.RoomDAO;
+import org.project.domain.Reservation;
+import org.project.domain.Room;
 
 /** 
  * <!-- begin-UML-doc -->

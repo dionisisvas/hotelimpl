@@ -33,7 +33,6 @@ public class OfferJpaDAO extends GenericJpaDAO<Offer> implements OfferDAO {
 	/** 
 	 * (non-Javadoc)
 	 * @see OfferDAO#findOffer(Room currResRoom, Calendar startDate, Calendar endDate)
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
 	public Offer findOffer(RoomType type, Calendar startDate, Calendar endDate) {
 		// begin-user-code
@@ -43,7 +42,6 @@ public class OfferJpaDAO extends GenericJpaDAO<Offer> implements OfferDAO {
 		return (Offer) qry.getSingleResult();
 		// end-user-code
 	}
-	
 	
 	public List<Offer> findOfferByStartingDate(RoomType type, Calendar startDate) {
 		// begin-user-code

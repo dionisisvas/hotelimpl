@@ -3,13 +3,9 @@
  */
 package org.project.service;
 
-import java.util.Set;
-
 import org.project.dao.DAOFactory;
 import org.project.dao.ReservationDAO;
-import org.project.dao.RoomDAO;
 import org.project.domain.Reservation;
-import org.project.domain.Room;
 
 /** 
  * <!-- begin-UML-doc -->

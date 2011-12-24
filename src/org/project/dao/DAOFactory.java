@@ -3,13 +3,14 @@
  */
 package org.project.dao;
 
-import static org.project.jpadao.JpaDAOFactory.*;
+import org.project.dao.DAOFactory;
+
 
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
  * @author pkourtis
- * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+ * 
  */
 public abstract class DAOFactory {
 	/** 
@@ -17,7 +18,7 @@ public abstract class DAOFactory {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	private static DAOFactory factory;
+	private static DAOFactory factory = null;
 
 	/** 
 	 * @return the factory
@@ -25,7 +26,20 @@ public abstract class DAOFactory {
 	 */
 	public static DAOFactory getFactory() {
 		// begin-user-code
-		return factory;
+		if (factory == null) {
+            String className = null;
+
+            if (System.getProperty("daofactory") != null) {
+                className = System.getProperty("daofactory");
+            }
+
+            try {
+                factory = (DAOFactory) Class.forName(className).newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return factory;
 		// end-user-code
 	}
 

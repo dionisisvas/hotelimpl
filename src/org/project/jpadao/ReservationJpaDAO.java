@@ -9,9 +9,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.project.domain.Customer;
-import org.project.domain.Reservation;
 import org.project.dao.ReservationDAO;
+import org.project.domain.Reservation;
 
 /** 
  * <!-- begin-UML-doc -->

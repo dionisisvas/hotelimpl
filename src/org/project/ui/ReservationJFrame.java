@@ -11,12 +11,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -42,21 +39,26 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	}
 	
 	private JTable table;
-	//private JList list;
-	private JTextArea output;
+	//private JTextArea output;
 	private JButton newReservation;
 	private JButton deleteReservation;
+	private JTextArea output;
 	private JButton updateReservation;
 	
-	private Integer[][] reservationIDs;
 	private ListSelectionModel listSelectionModel;
 	
 	private ReservationAdminPresenter presenter;
+	private Integer[][] reservationIDs;
+	private Calendar[][] startingDates;
+	private Calendar[][] endingDates;
+	private boolean[][] reservationPaid;
+	private String[][] customerFirstName;
+	private String[][] customerLastName;
 
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
-	public static void main(String[] args) {
+	/**public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
@@ -64,10 +66,11 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 				// TODO Auto-generated method stub
 			}
 		});
-	}
+	}*/
 	
 	public ReservationJFrame() {
 		super();
+		presenter.showReservations();
 		initGUI();
 	}
 	
@@ -89,11 +92,15 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 				//TableModel tableColumns;
 				//tableColumns = new DefaultTableModel(tableData,columnNames);
 				table = new JTable();
-				table.addComponentListener(null);
-				//presenter.showReservations();
 				for(int rows = 0; rows<reservationIDs[rows].length; rows++){
-					for(int columns = 0; columns < reservationIDs[columns].length; columns++)
+					for(int columns = 0; columns < reservationIDs[columns].length; columns++){
 					table.setValueAt(reservationIDs[rows][columns], rows, columns);
+					table.setValueAt(startingDates[rows][columns], rows, columns);
+					table.setValueAt(endingDates[rows][columns], rows, columns);
+					table.setValueAt(reservationPaid[rows][columns], rows, columns);
+					table.setValueAt(customerFirstName[rows][columns], rows, columns);
+					table.setValueAt(customerLastName[rows][columns], rows, columns);
+					}
 				}
 				
 				listSelectionModel = table.getSelectionModel();
@@ -122,6 +129,11 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 				deleteReservation = new JButton();
 				getContentPane().add(deleteReservation, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				deleteReservation.setText("Delete");
+			}
+			{
+				output = new JTextArea();
+				getContentPane().add(output, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+				output.setText("output");
 			}
 			pack();
 			this.setSize(768, 340);
@@ -152,39 +164,36 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 		//listModel.add(index, reservationID);
 	}
 
-	@Override
+	/**@Override
 	public Integer[][] getCode() {
 		return reservationIDs;//listModel.getElementAt(index).toString();
-	}
+	}*/
 
 	@Override
 	public void setStartDate(Calendar startDate, int rows,int columns) {
-		//for(int i = 0; i<presenter.reservationsListSize(); i++)
-			//listModel.add(index,startDate);
+		startingDates[rows][columns] = startDate;
 	}
-	public String getStartDate(){
+	/**public String getStartDate(){
 		return null;//list.getModel().toString();
-	}
+	}*/
 
 	@Override
 	public void setEndDate(Calendar endDate, int rows,int columns) {
-		//for(int i = 0; i<presenter.reservationsListSize(); i++)
-			//listModel.add(index,endDate);
+		endingDates[rows][columns] = endDate;
 	}
 	
-	public String getEndDate(){
+	/**public String getEndDate(){
 		return null;//list.getModel().toString();
-	}
+	}*/
 
 	@Override
 	public void setPaid(boolean b, int rows,int columns) {
-		//for(int i = 0; i<presenter.reservationsListSize(); i++)
-			//listModel.add(index,b);
+		reservationPaid[rows][columns] = b;
 	}
 	
-	public String getPaid() {
+	/**public String getPaid() {
 		return null;//list.getModel().toString();
-	}
+	}*/
 	
 	@Override
 	public void setCusAddress(String address) {
@@ -193,14 +202,12 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 
 	@Override
 	public void setCusFirstName(String firstName, int rows,int columns) {
-		//for(int i = 0; i<presenter.reservationsListSize(); i++)
-			//listModel.add(index,firstName);
+		customerFirstName[rows][columns] = firstName;
 	}
 
 	@Override
 	public void setCusLastName(String lastName, int rows,int columns) {
-		//for(int i = 0; i<presenter.reservationsListSize(); i++)
-			//listModel.add(index,lastName);
+		customerLastName[rows][columns] = lastName;
 		
 	}
 
@@ -215,7 +222,7 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	}
 	
 	@Override
-	public String getCusAddress() {
+	/**public String getCusAddress() {
 		return null;//list.getModel().toString();		
 	}
 
@@ -238,7 +245,7 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	@Override
 	public String getCusPhoneNumber() {
 		return null;//list.getModel().toString();		
-	}
+	}*/
 
 	
 	
@@ -278,10 +285,10 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	public void setRoomNumber(Integer roomNum) {		
 	}	
 	
-	@Override
+/**	@Override
 	public String getCustomerCode() {
 		return null;
-	}
+	}*/
 
 	@Override
 	public void setReservationDeleted(boolean reservationFound) {		

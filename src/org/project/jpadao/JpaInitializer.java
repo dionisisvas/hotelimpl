@@ -13,8 +13,8 @@ public class JpaInitializer extends Initializer {
         EntityManager em = JPAUtil.getCurrentEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        
-        Query query = em.createNativeQuery("delete from \"reservations\"");
+        Query query;
+        query= em.createNativeQuery("delete from \"reservations\"");
         query.executeUpdate();
         
         query = em.createNativeQuery("delete from \"offers\"");

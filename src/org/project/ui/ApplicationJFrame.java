@@ -148,7 +148,7 @@ public class ApplicationJFrame extends javax.swing.JFrame {
             public void run() {
             	ReservationJFrame inst = new ReservationJFrame();
                 inst.setLocationRelativeTo(null);
-                ReservationPresenter presenter = new ReservationPresenter(inst);
+                ReservationAdminPresenter presenter = new ReservationAdminPresenter(inst);
                 presenter.start();
                 //inst.setVisible(true);
             }

@@ -19,8 +19,9 @@ public interface CustomerDAO extends GenericDAO<Customer> {
 	 * <!-- end-UML-doc -->
 	 * @param customerID
 	 * @return
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
+	 * 
 	 */
+	
 	public Customer findCustomer(Integer customerID);
 	
 	public List<Customer> findAll();
