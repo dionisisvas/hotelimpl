@@ -36,6 +36,17 @@ public class Room {
 
 	@Column(name="roomNumber",nullable=false)
 	private Integer roomNumber;
+	
+	
+	public Room(BedType bed, RoomType type, boolean availability,
+            Double pricePerDay, Integer roomNumber) {
+        this.bed = bed;
+        this.type = type;
+        this.availability = availability;
+        this.pricePerDay = pricePerDay;
+        this.roomNumber = roomNumber;
+    }
+	
 
 	public Integer getRoomId() {
 		return roomId;

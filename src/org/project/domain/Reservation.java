@@ -4,6 +4,7 @@
 package org.project.domain;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -62,6 +63,16 @@ public class Reservation {
 	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY )
 	@JoinColumn(name="customerId")
 	private Customer customer;
+	
+	
+	public Reservation(Boolean paid, Calendar startDate,
+            Calendar endDate, Set<Room> room, Customer customer) {
+        this.customer = customer;
+        this.room = room;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.paid = paid;
+    }
 	
 	/** 
 	 * @return the totalPrice

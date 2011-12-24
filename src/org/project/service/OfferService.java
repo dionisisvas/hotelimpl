@@ -82,17 +82,22 @@ public class OfferService {
 	public void createOffer(OfferView view, Calendar startingDate, Calendar endingDate, RoomType roomType, double percentage) {
 		// begin-user-code
 		// TODO Auto-generated method stub
-		Offer currentOffer = new Offer (startingDate, endingDate, roomType, percentage);
+		/*******Offer currentOffer = new Offer (startingDate, endingDate, roomType, percentage);
+		
 		if (offerExists(startingDate, endingDate, roomType) == false) {
 			offerDAO.save(currentOffer);
 			
 			}else{ view.showWarning("Warning");
 		}
 		// end-user-code
+		 *******/
 	}
 
-	//Method that checks if an offer exists for the same type of rooms for the selected dates or
-	//for days between the selected ones
+	/*Method that checks if an offer exists for the same type of rooms for the selected dates or
+	 *for days between the selected ones.
+	 * The method searches the offer table at the database and checks if there is an another offer for the same room type
+	 * starting the same day or any day between the selected range of days.
+	 */
 	public boolean offerExists(Calendar startingDate, Calendar endingDate, RoomType roomType){
 		if(offerDAO.findOfferByStartingDate(roomType, startingDate)!=null){
 			return true;

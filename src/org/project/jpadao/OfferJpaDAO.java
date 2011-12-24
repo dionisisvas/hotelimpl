@@ -50,7 +50,7 @@ public class OfferJpaDAO extends GenericJpaDAO<Offer> implements OfferDAO {
 		// TODO Auto-generated method stub
 		String jpql = "select o from Offer o where o.startingDate = :startDate AND o.roomType=:type";
         Query qry = JPAUtil.getCurrentEntityManager().createQuery(jpql).setParameter("starDate", startDate).setParameter("type", type); 
-		return (Offer) qry.getSingleResult();
+		return (List<Offer>) qry.getSingleResult();
 		// end-user-code
 	}
 	

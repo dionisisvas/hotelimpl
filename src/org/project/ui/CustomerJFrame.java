@@ -31,14 +31,21 @@ public class CustomerJFrame extends javax.swing.JFrame implements CustomerView {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private JLabel customerJL;
-	private JButton searchJB;
 	private JLabel descriptionJL;
+	
+	private JButton searchJB;
 	private JButton removeJB;
 	private JButton modifyJB;
 	private JButton registerJB;
 	private JButton cancelJB;
+	
 	private JTextField searchTF;
+	private JTextField customerTF;
+	private JTextField resCodeTF;
+
+
 
 	private CustomerPresenter presenter;
 	private Customer foundCustomer;

@@ -3,8 +3,8 @@
  */
 package org.project.ui;
 
+import java.awt.event.ActionEvent;
 import java.util.Calendar;
-import java.util.Date;
 
 /** 
  * <!-- begin-UML-doc -->
@@ -12,65 +12,36 @@ import java.util.Date;
  * @author pkourtis
  */
 public interface ReservationView extends View{
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
-	public void Initialize();
+	
+	public void Initialize(ActionEvent evt);
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param integer
-	 *
-	 */
-	
-	void setPresenter(ReservationPresenter presenter);
-	
-	void setPresenter(ReservationAdminPresenter presenter);
-	
+
 	void setReservatonActionEnabled(boolean enabled);
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
 	public void refresh();
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param totalPrice
-	 */
+
 	public void setTotalPrice(Double totalPrice);
 
-	/** 
-	 * <!-- begin-UML-doc -->
-	 * <!-- end-UML-doc -->
-	 * @param msg
-	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
-	 */
 	public void showWarning(String msg);
 
 	public void setRoomNumber(Integer roomNum);
 
-	public void setReservation(Integer reservationID,int index);
+	public void setReservation(Integer reservationID,int columns, int rows);
 
 	public String getReservationCode();
 
-	public void setStartDate(Calendar startDate, int index);
+	public void setStartDate(Calendar startDate, int rows, int columns);
 
-	public void setEndDate(Calendar endDate, int index);
+	public void setEndDate(Calendar endDate, int rows, int columns);
 
-	public void setPaid(boolean b, int index);
+	public void setPaid(boolean b, int rows, int columns);
 
 	public void setCusAddress(String address);
 
-	public void setCusFirstName(String firstName, int index);
+	public void setCusFirstName(String firstName, int rows, int columns);
 
-	public void setCusLastName(String lastName, int index);
+	public void setCusLastName(String lastName, int rows, int columns);
 
 	public void setCusEmail(String email);
 
@@ -80,8 +51,7 @@ public interface ReservationView extends View{
 
 	public void setReservationDeleted(boolean reservationFound);
 
-	public void setAdminPresenter(
-			ReservationAdminPresenter reservationAdministrationView);
+	public void setAdminPresenter(ReservationAdminPresenter presenter);
 
 	public String getCusAddress();
 
@@ -93,7 +63,9 @@ public interface ReservationView extends View{
 
 	public String getCusPhoneNumber();
 
-	String getReservationCode(int index);
+	public Integer[][] getCode();
+
+	public void setPresenter(ReservationPresenter reservationPresenter);
 
 	
 

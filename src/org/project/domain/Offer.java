@@ -68,7 +68,7 @@ public class Offer {
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
 	public Offer(Calendar startingDate, Calendar endingDate,
-			RoomType roomType, double percentage) {
+			double percentage, RoomType roomType) {
 		// begin-user-code
 		// TODO Auto-generated constructor stub
 		this.startingDate = startingDate;
@@ -114,7 +114,7 @@ public class Offer {
 	 * @param endingDate the endingDate to set
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void setEndingDate(Date endingDate) {
+	public void setEndingDate(Calendar endingDate) {
 		// begin-user-code
 		this.endingDate = endingDate;
 		// end-user-code

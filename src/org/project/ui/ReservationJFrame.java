@@ -1,19 +1,22 @@
 package org.project.ui;
+import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.util.Calendar;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
-
-import org.project.service.ReservationService;
-
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -27,7 +30,7 @@ import org.project.service.ReservationService;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class ReservationJFrame extends javax.swing.JFrame implements ReservationView {
+public class ReservationJFrame extends javax.swing.JFrame implements ReservationView, ListSelectionListener {
 
 	{
 		//Set Look & Feel
@@ -37,86 +40,91 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 			e.printStackTrace();
 		}
 	}
-
-	private JList jList1;
-	private JButton jButton1;
-	private JButton jButton2;
-	private JButton jButton3;
-	private DefaultListModel listModel;
+	
+	private JTable table;
+	//private JList list;
+	private JTextArea output;
+	private JButton newReservation;
+	private JButton deleteReservation;
+	private JButton updateReservation;
+	
+	private Integer[][] reservationIDs;
+	private ListSelectionModel listSelectionModel;
 	
 	private ReservationAdminPresenter presenter;
-	private ReservationService reservationService;
 
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
 			public void run() {
-				ReservationJFrame inst = new ReservationJFrame();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
+				// TODO Auto-generated method stub
 			}
 		});
 	}
 	
 	public ReservationJFrame() {
 		super();
-		listModel = new DefaultListModel();
-		jList1 = new JList(listModel);
-		//listModel.addElement("a");
 		initGUI();
 	}
 	
 	private void initGUI() {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			GridBagLayout thisLayout = new GridBagLayout();
+			thisLayout.rowWeights = new double[] {0.1, 0.1, 0.1, 0.1};
+			thisLayout.rowHeights = new int[] {7, 7, 7, 7};
+			thisLayout.columnWeights = new double[] {0.0, 0.0, 0.0, 0.1};
+			thisLayout.columnWidths = new int[] {266, 280, 149, 7};
+			getContentPane().setLayout(thisLayout);
+			this.setPreferredSize(new java.awt.Dimension(768, 340));
+			this.setTitle("Reservations");
 			{
-				GridBagLayout thisLayout = new GridBagLayout();
-				thisLayout.rowWeights = new double[] {0.1, 0.1, 0.1, 0.1};
-				thisLayout.rowHeights = new int[] {7, 7, 7, 7};
-				thisLayout.columnWeights = new double[] {0.1, 0.1, 0.1, 0.1};
-				thisLayout.columnWidths = new int[] {7, 7, 7, 7};
-				getContentPane().setLayout(thisLayout);
+				//String[][] tableData = { {"One","Two","Three","Four","Five","Six" }, { "One","Two","Three","Four","Five","Six"  } };
+				//String[] columnNames = { "ReservationID", "Starting Date","Ending Date", "Paid","Customer Last Name", "Customer First Name"  };
 				
-				//ListModel jList1Model = new DefaultComboBoxModel( new String[] { "Item One", "Item Two" });
-				
-				jList1.setModel(listModel);
-				
-				jList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-				jList1.setSelectedIndex(0);
-				jList1.setVisibleRowCount(5);
-			    JScrollPane listScrollPane = new JScrollPane(jList1);
-			    //jList1.addListSelectionListener(this);
-				getContentPane().add(jList1, new GridBagConstraints(0, 0, 4, 2, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
-				jList1.setLayout(null);
-				jList1.setPreferredSize(new java.awt.Dimension(408, 49));
-				
-				presenter.showReservations();
-				/**for (int i = 0; i<listModel.getSize();i++)
-					listModel.addElement(getReservationCode(i));*/
-				for(int i = 0; i < listModel.getSize(); i++){
-					listModel.add(i, getReservationCode(i));
-					listModel.getElementAt(i);
+				//TableModel tableColumns;
+				//tableColumns = new DefaultTableModel(tableData,columnNames);
+				table = new JTable();
+				table.addComponentListener(null);
+				//presenter.showReservations();
+				for(int rows = 0; rows<reservationIDs[rows].length; rows++){
+					for(int columns = 0; columns < reservationIDs[columns].length; columns++)
+					table.setValueAt(reservationIDs[rows][columns], rows, columns);
 				}
+				
+				listSelectionModel = table.getSelectionModel();
+		        listSelectionModel.addListSelectionListener(new SharedListSelectionHandler());
+		        table.setSelectionModel(listSelectionModel);
+		        JScrollPane tablePane = new JScrollPane(table);
+		        
+		        tablePane.setLayout(new BorderLayout());
+		        tablePane.add(table, BorderLayout.CENTER);
+		        tablePane.add(table.getTableHeader(), BorderLayout.NORTH);
+		        
+				getContentPane().add(table, new GridBagConstraints(0, 0, 4, 2, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+				table.setPreferredSize(new java.awt.Dimension(889, 150));
 			}
 			{
-				jButton1 = new JButton();
-				getContentPane().add(jButton1, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-				jButton1.setText("New"+listModel.getSize());
+				newReservation = new JButton();
+				getContentPane().add(newReservation, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				newReservation.setText("New");
 			}
 			{
-				jButton2 = new JButton();
-				getContentPane().add(jButton2, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-				jButton2.setText("Update");
+				updateReservation = new JButton();
+				getContentPane().add(updateReservation, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				updateReservation.setText("Update");
 			}
 			{
-				jButton3 = new JButton();
-				getContentPane().add(jButton3, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-				jButton3.setText("Delete");
+				deleteReservation = new JButton();
+				getContentPane().add(deleteReservation, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				deleteReservation.setText("Delete");
 			}
 			pack();
-			this.setSize(827, 346);
+			this.setSize(768, 340);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
@@ -137,50 +145,45 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	public void close() {
 		dispose();
 	}
-	
+
 	@Override
-	public void setPresenter(ReservationAdminPresenter presenter) {
-		this.presenter = presenter;
+	public void setReservation(Integer reservationID, int row,int column) {
+		reservationIDs[row][column] = reservationID;
+		//listModel.add(index, reservationID);
 	}
 
 	@Override
-	public void setReservation(Integer reservationID, int index) {
-			presenter.showReservations();
-			listModel.add(index, reservationID);
+	public Integer[][] getCode() {
+		return reservationIDs;//listModel.getElementAt(index).toString();
 	}
 
 	@Override
-	public String getReservationCode(int index) {
-		return listModel.getElementAt(index).toString();
-	}
-
-	@Override
-	public void setStartDate(Calendar startDate, int index) {
+	public void setStartDate(Calendar startDate, int rows,int columns) {
 		//for(int i = 0; i<presenter.reservationsListSize(); i++)
-			listModel.add(index,startDate);
+			//listModel.add(index,startDate);
 	}
 	public String getStartDate(){
-		return jList1.getModel().toString();
+		return null;//list.getModel().toString();
 	}
 
 	@Override
-	public void setEndDate(Calendar endDate, int index) {
+	public void setEndDate(Calendar endDate, int rows,int columns) {
 		//for(int i = 0; i<presenter.reservationsListSize(); i++)
-			listModel.add(index,endDate);
+			//listModel.add(index,endDate);
 	}
 	
 	public String getEndDate(){
-		return jList1.getModel().toString();
+		return null;//list.getModel().toString();
 	}
 
 	@Override
-	public void setPaid(boolean b, int index) {
+	public void setPaid(boolean b, int rows,int columns) {
 		//for(int i = 0; i<presenter.reservationsListSize(); i++)
-			listModel.add(index,b);
+			//listModel.add(index,b);
 	}
 	
 	public String getPaid() {
-		return jList1.getModel().toString();
+		return null;//list.getModel().toString();
 	}
 	
 	@Override
@@ -189,15 +192,15 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	}
 
 	@Override
-	public void setCusFirstName(String firstName, int index) {
+	public void setCusFirstName(String firstName, int rows,int columns) {
 		//for(int i = 0; i<presenter.reservationsListSize(); i++)
-			listModel.add(index,firstName);
+			//listModel.add(index,firstName);
 	}
 
 	@Override
-	public void setCusLastName(String lastName, int index) {
+	public void setCusLastName(String lastName, int rows,int columns) {
 		//for(int i = 0; i<presenter.reservationsListSize(); i++)
-			listModel.add(index,lastName);
+			//listModel.add(index,lastName);
 		
 	}
 
@@ -213,28 +216,28 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 	
 	@Override
 	public String getCusAddress() {
-		return jList1.getModel().toString();		
+		return null;//list.getModel().toString();		
 	}
 
 	@Override
 	public String getCusFirstName() {
-		return jList1.getModel().toString();
+		return null;//list.getModel().toString();
 		
 	}
 
 	@Override
 	public String getCusLastName() {
-		return jList1.getModel().toString();
+		return null;//list.getModel().toString();
 	}
 
 	@Override
 	public String getCusEmail() {
-		return jList1.getModel().toString();
+		return null;//list.getModel().toString();
 	}
 
 	@Override
 	public String getCusPhoneNumber() {
-		return jList1.getModel().toString();		
+		return null;//list.getModel().toString();		
 	}
 
 	
@@ -261,66 +264,37 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 
 	@Override
 	public void showError(String message) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public void showInfo(String message) {
-		// TODO Auto-generated method stub
-		
+	public void showInfo(String message) {	
 	}
 	
 	@Override
-	public void setReservatonActionEnabled(boolean enabled) {
-		// TODO Auto-generated method stub
-		
+	public void setReservatonActionEnabled(boolean enabled) {		
 	}
 
 	@Override
-	public void setRoomNumber(Integer roomNum) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-
-	
-	
+	public void setRoomNumber(Integer roomNum) {		
+	}	
 	
 	@Override
 	public String getCustomerCode() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setReservationDeleted(boolean reservationFound) {
-		// TODO Auto-generated method stub
-		
+	public void setReservationDeleted(boolean reservationFound) {		
 	}
 
 	@Override
 	public void setAdminPresenter(ReservationAdminPresenter presenter) {
 		this.presenter = presenter;
-		
 	}
 
 	@Override
-	public void Initialize() {
+	public void Initialize(ActionEvent evt) {
 		// TODO Auto-generated method stub
-		
-	}
-	public ReservationService getReservationService() {
-		// begin-user-code
-		return reservationService;
-		// end-user-code
-	}
-
-	@Override
-	public void setPresenter(ReservationPresenter presenter) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -329,4 +303,44 @@ public class ReservationJFrame extends javax.swing.JFrame implements Reservation
 		return null;
 	}
 
+	@Override
+	public void setPresenter(ReservationPresenter reservationPresenter) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	class SharedListSelectionHandler implements ListSelectionListener {
+        public void valueChanged(ListSelectionEvent e) { 
+            ListSelectionModel lsm = (ListSelectionModel)e.getSource();
+
+            int firstIndex = e.getFirstIndex();
+            int lastIndex = e.getLastIndex();
+            boolean isAdjusting = e.getValueIsAdjusting(); 
+            output.append("Event for indexes "
+                          + firstIndex + " - " + lastIndex
+                          + "; isAdjusting is " + isAdjusting
+                          + "; selected indexes:");
+
+            if (lsm.isSelectionEmpty()) {
+                output.append(" <none>");
+            } else {
+                // Find out which indexes are selected.
+                int minIndex = lsm.getMinSelectionIndex();
+                int maxIndex = lsm.getMaxSelectionIndex();
+                for (int i = minIndex; i <= maxIndex; i++) {
+                    if (lsm.isSelectedIndex(i)) {
+                        output.append(" " + i);
+                    }
+                }
+            }
+            output.append("\n");
+            output.setCaretPosition(output.getDocument().getLength());
+        }
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

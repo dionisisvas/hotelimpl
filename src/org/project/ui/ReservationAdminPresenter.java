@@ -31,26 +31,34 @@ public class ReservationAdminPresenter {
 		reservation = DAOFactory.getFactory().getReservationDAO().findAll();
 		customer = DAOFactory.getFactory().getCustomerDAO().findAll();
 		//emfanish stoixeiwn krathshs
-		int index = 0;
-		reservation.iterator().remove();
-		customer.iterator().remove();
-		while(reservation.iterator().hasNext()){
-			currRes = reservation.iterator().next();
-			currCust = customer.iterator().next();
-			view.setReservation(currRes.getReservationID(),index);
-			view.setStartDate(currRes.getStartDate(),index);
-			view.setEndDate(currRes.getEndDate(),index);
-			view.setPaid(currRes.isPaid(),index);
-			//emfanish trexontwn stoixeiwn pelath
-			view.setCusLastName(currCust.getLastName(),index);
-			view.setCusFirstName(currCust.getFirstName(),index);
-			index++;
-			/**
-			view.setCusAddress(customer.iterator().next().getAddress());
-			view.setCusEmail(customer.iterator().next().getEmail());
-			view.setCusPhoneNumber(customer.iterator().next().getPhoneNumber()); */
-		}
+		int columns = 0,rows = 0;
+		//reservation.iterator().remove();
+		//customer.iterator().remove();
 		
+			while(reservation.iterator().hasNext()){
+				currRes = reservation.iterator().next();
+				currCust = customer.iterator().next();
+				view.setReservation(currRes.getReservationID(),rows,columns);
+				columns++;
+				view.setStartDate(currRes.getStartDate(),rows,columns);
+				columns++;
+				view.setEndDate(currRes.getEndDate(),rows,columns);
+				columns++;
+				view.setPaid(currRes.isPaid(),rows,columns);
+				columns++;
+				//emfanish trexontwn stoixeiwn pelath
+				view.setCusLastName(currCust.getLastName(),rows,columns);
+				columns++;
+				view.setCusFirstName(currCust.getFirstName(),rows,columns);
+				rows++;
+				columns++;
+				/**
+				view.setCusAddress(customer.iterator().next().getAddress());
+				view.setCusEmail(customer.iterator().next().getEmail());
+				view.setCusPhoneNumber(customer.iterator().next().getPhoneNumber()); */
+			}
+		
+
 	}
 	public int reservationsListSize(){
 		reservation = DAOFactory.getFactory().getReservationDAO().findAll();

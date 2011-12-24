@@ -63,6 +63,20 @@ public class Customer {
 	 */
 	@Column(name="lastName",nullable=false)
 	private String lastName;
+	
+	
+	public Customer(String firstName, String address, String email,
+            String phoneNumber, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+	public Customer() {
+		
+	}
 
 	/** 
 	 * @return the firstName

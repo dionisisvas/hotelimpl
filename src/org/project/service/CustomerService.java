@@ -16,26 +16,26 @@ public class CustomerService {
 	 * <!-- end-UML-doc -->
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	private CustomerAdministrationView customerAdministrationView;
-
+	/*****private CustomerAdministrationView customerAdministrationView;
+*****/
 	/** 
 	 * @return the customerAdministrationView
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public CustomerAdministrationView getCustomerAdministrationView() {
+	/*******public CustomerAdministrationView getCustomerAdministrationView() {
 		// begin-user-code
 		return customerAdministrationView;
 		// end-user-code
-	}
+	}********/
 
 	/** 
 	 * @param customerAdministrationView the customerAdministrationView to set
 	 * @generated "UML to JPA (com.ibm.xtools.transform.uml2.ejb3.java.jpa.internal.UML2JPATransform)"
 	 */
-	public void setCustomerAdministrationView(
+	/******public void setCustomerAdministrationView(
 			CustomerAdministrationView customerAdministrationView) {
 		// begin-user-code
 		this.customerAdministrationView = customerAdministrationView;
 		// end-user-code
-	}
+	}****/
 }
